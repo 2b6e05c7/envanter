@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
   belongs_to :template
   has_many :debits
   has_many :users, through: :debits

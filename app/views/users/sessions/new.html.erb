@@ -25,10 +25,6 @@
       <div class="card-header"><%= t(:login) %></div>
       <div class="card-body">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <!-- <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
-          </div> -->
           <div class="form-group">
             <%= f.label :email %><br />
             <%= f.email_field :email, class: "form-control", autofocus: true, placeholder: "Enter email" %>
@@ -47,7 +43,7 @@
               </div>
             </div>
           <% end -%>
-          <%= f.submit "Log in", class:"btn btn-primary btn-block" %>
+          <%= f.submit t(:login), class:"btn btn-primary btn-block" %>
           <% end %>
         <div class="text-center">
           <%= render "users/shared/links" %>

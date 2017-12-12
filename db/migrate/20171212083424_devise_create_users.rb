@@ -20,6 +20,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string   :last_sign_in_ip
 
       t.integer  :role, default: 0
+      t.integer  :locale, default: 0
       t.string   :first_name
       t.string   :last_name
 

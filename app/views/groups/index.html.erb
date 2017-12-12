@@ -10,10 +10,14 @@
 
 <div class="card mb-3">
   <div class="card-header">
-    <i class="fa fa-group"></i> <%= t(:listing_groups) %></div>
+    <i class="fa fa-group"></i> <%= t(:listing_groups) %>
+    <div class="pull-right">
+      <%= link_to t(:new_group), new_group_path, class: "btn btn-sm btn-primary" %>
+    </div>
+  </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Name</th>
@@ -23,7 +27,7 @@
         <tbody>
           <% @groups.each do |group| %>
             <tr>
-              <td><%= link_to group.name, group %></td>
+              <td><b><u><%= link_to group.name, group %></u></b></td>
               <td><%= link_to t(:edit), edit_group_path(group) %></td>
               <td><%= link_to t(:destroy), group, method: :delete, data: { confirm: t(:are_you_sure) } %></td>
             </tr>
@@ -33,7 +37,3 @@
     </div>
   </div>
 </div>
-
-<br>
-
-<%= link_to t(:new_group), new_group_path %>

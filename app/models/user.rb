@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :debits
   has_many :products, through: :debits
   enum role: [ :staff, :admin ]
+  enum locale: [ :en, :tr ]
 end

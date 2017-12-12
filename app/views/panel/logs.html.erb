@@ -1,1 +1,3 @@
-<h1>Logs</h1>
+<% @activities.each do |activity| %>
+<p><%= activity.to_json %></p>
+<% end %>

@@ -13,14 +13,13 @@
     <i class="fa fa-group"></i> <%= t(:listing_users) %></div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th><%= t(:first_name) %></th>
             <th><%= t(:last_name) %></th>
             <th><%= t(:email) %></th>
             <th><%= t(:role) %></th>
-            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
@@ -37,7 +36,3 @@
     </div>
   </div>
 </div>
-
-<br>
-
-<%= link_to 'New Template', new_template_path %>

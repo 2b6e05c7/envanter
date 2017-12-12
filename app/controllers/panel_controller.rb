@@ -1,5 +1,4 @@
 class PanelController < ApplicationController
-  # I18n.locale = :tr #FIXME Temporary config
 
   def index
   end
@@ -12,5 +11,6 @@ class PanelController < ApplicationController
   end
 
   def logs
+    @activities = PublicActivity::Activity.all
   end
 end
