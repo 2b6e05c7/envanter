@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   def set_locale
-    I18n.locale = current_user.locale unless current_user.nil?
+    I18n.locale = current_user.nil? ? I18n.default_locale : current_user.locale
   end
 end
