@@ -1,0 +1,39 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/"><%= t(:dashboard) %></a>
+  </li>
+  <li class="breadcrumb-item active"><%= t(:templates) %></li>
+</ol>
+
+<p id="notice"><%= notice %></p>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-group"></i> <%= t(:listing_groups) %></div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @templates.each do |template| %>
+            <tr>
+              <td><%= link_to template.name, template %></td>
+              <td><%= link_to t(:edit), edit_template_path(template) %></td>
+              <td><%= link_to t(:delete), template, method: :delete, data: { confirm: t(:are_you_sure) } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Template', new_template_path %>

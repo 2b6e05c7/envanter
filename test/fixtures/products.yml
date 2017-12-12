@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  template: one
+  company: MyString
+  properties: MyText
+  year: 1
+  warranty: 1
+  status: 1
+
+two:
+  name: MyString
+  template: two
+  company: MyString
+  properties: MyText
+  year: 1
+  warranty: 1
+  status: 1

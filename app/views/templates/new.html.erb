@@ -1,0 +1,14 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/"><%= t(:dashboard) %></a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="/templates"><%= t(:templates) %></a>
+  </li>
+  <li class="breadcrumb-item active"><%= t(:new_template) %></li>
+</ol>
+
+<%= render 'form', template: @template %>
+
+<%= link_to 'Back', templates_path %>

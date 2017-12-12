@@ -1,0 +1,14 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/"><%= t(:dashboard) %></a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="/groups"><%= t(:groups) %></a>
+  </li>
+  <li class="breadcrumb-item active"><%= t(:new_group) %></li>
+</ol>
+
+<%= render 'form', group: @group %>
+
+<%= link_to 'Back', groups_path %>

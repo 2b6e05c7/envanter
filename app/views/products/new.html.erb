@@ -1,0 +1,14 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/"><%= t(:dashboard) %></a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="/products"><%= t(:products) %></a>
+  </li>
+  <li class="breadcrumb-item active"><%= t(:new_product) %></li>
+</ol>
+
+<%= render 'form', product: @product %>
+
+<%= link_to 'Back', products_path %>
