@@ -49,15 +49,13 @@
     </p>
 
     <p>
-      <strong><%= t(:current_debit) %>:</strong>
       <% if @debit %>
-      <% if @debit.user %>
-      <%= @debit.user.full_name %>
-      <% else %>
-      <%= @debit.group.name %>
-      <% end %>
-      <% else %>
-      Yok
+        <strong><%= t(:current_debit) %>:</strong>
+        <% if @debit.user %>
+          <%= @debit.user.full_name %>
+        <% else %>
+          <%= @debit.group.name %>
+        <% end %>
       <% end %>
     </p>
 

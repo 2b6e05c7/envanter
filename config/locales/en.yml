@@ -19,11 +19,18 @@ en:
         password: "Password"
         password_confirmation: "Password Confirmation"
         current_password: "Current Password"
+      template:
+        name: "Template Name"
+        properties: "Properties"
   helpers:
     submit:
       create: "Create"
       submit: "Save"
       update: "Update"
+  will_paginate:
+    previous_label: "< Previous"
+    next_label: "Next >"
+    page_gap: "…"
   en: "English"
   tr: "Turkish"
   dashboard: "Dashboard"
@@ -97,6 +104,7 @@ en:
   debit_save_error: "An error occurred while saving the debit entry !"
   current_debit: "Current Debit"
   user_group: "User / Group"
+  start_date: "Start Date"
   end_date: "End Date"
   listing_debits: "Listing Debits"
   debit_true: "Active"

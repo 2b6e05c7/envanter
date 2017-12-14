@@ -2,21 +2,35 @@
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
   </li>
-  <li class="breadcrumb-item active"><%= t(:debits) %></li>
+  <li class="breadcrumb-item">
+    <a href="/panel/users"><%= t(:users) %></a>
+  </li>
+  <li class="breadcrumb-item active"><%= @user.full_name %></li>
 </ol>
 
 <div class="card mb-3">
-  <div class="card-header">
-    <i class="fa fa-database"></i> <%= t(:listing_debits) %>
+  <div class="card-header" style="text-align:center;">
+    <i class="fa fa-user"></i> <%= @user.full_name %></b>
   </div>
   <div class="card-body">
+    <p>
+      <strong><%= t(:full_name) %>:</strong>
+      <%= @user.full_name %>
+    </p>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-cube"></i> <%= t(:listing_debits) %>
+  </div>
+  <div class="card-body">
+    <% if @debits.any? %>
     <div class="table-responsive">
       <table class="table table-bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th><%= t(:product) %></th>
-            <th><%= t(:user_group) %></th>
-            <th><%= t(:start_date) %></th>
+            <th><%= t(:product_name) %></th>
             <th><%= t(:end_date) %></th>
             <th><%= t(:status) %></th>
           </tr>
@@ -25,26 +39,15 @@
           <% @debits.each do |debit| %>
           <tr>
             <td><%= debit.product.name %></td>
-            <td>
-              <% if debit.user %>
-              <%= debit.user.full_name %>
-              <% else %>
-              <%= debit.group.name %>
-              <% end %>
-            </td>
-            <td>Eklenecek</td>
             <td><%= debit.end || "-" %></td>
-            <td><%= t(:"debit_#{debit.status}") %></td>
+            <td><%= t("debit_#{debit.status}") %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-      <center>
-        <%= page_entries_info @debits %>
-      </center>
-      <center>
-        <%= will_paginate @debits, inner_window: 1, outer_window: 1 %>
-      </center>
     </div>
+    <% else %>
+    <p><%= t(:no_debits) %></p>
+    <% end %>
   </div>
 </div>

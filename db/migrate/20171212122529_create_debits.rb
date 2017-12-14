@@ -5,6 +5,7 @@ class CreateDebits < ActiveRecord::Migration[5.1]
       t.belongs_to :group, foreign_key: true
       t.belongs_to :product, foreign_key: true
       t.boolean :status, default: true
+      t.date :start
       t.date :end
     end
   end

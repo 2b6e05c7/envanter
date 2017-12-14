@@ -19,11 +19,21 @@ tr:
         password: "Parola"
         password_confirmation: "Parola Tekrarı"
         current_password: "Kullanılan Parola"
+      template:
+        name: "Şablon Adı"
+        properties: "Özellikler"
   helpers:
     submit:
       create: "Ekle"
       submit: "Kaydet"
       update: "Güncelle"
+  will_paginate:
+    previous_label: "< Geri"
+    next_label: "İleri >"
+    page_gap: "…"
+    page_entries_info:
+      multi_page: "%{count} kayıttan %{from} - %{to} arasındakiler gösteriliyor."
+      multi_page_html: "%{count} kayıttan <b>%{from}&nbsp;-&nbsp;%{to}</b> arasındakiler gösteriliyor."
   en: "İngilizce"
   tr: "Türkçe"
   dashboard: "Pano"
@@ -99,6 +109,7 @@ tr:
   debit_save_error: "Zimmetleme işlemi sırasında bir hata oluştu !"
   current_debit: "Mevcut Zimmet"
   user_group: "Kullanıcı / Grup"
+  start_date: "Başlangıç Tarihi"
   end_date: "Bitiş Tarihi"
   listing_debits: "Zimmet Kayıtları Listeleniyor"
   debit_true: "Aktif"

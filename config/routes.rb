@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   scope '/panel' do
     get :index, to: 'panel#index'
+    get :'users/:id', to: 'panel#user'
     get :users, to: 'panel#users'
     get :debits, to: 'panel#debits'
     get :logs, to: 'panel#logs'
