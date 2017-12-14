@@ -54,7 +54,11 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group.destroy
+    begin
+      @group.destroy
+    rescue ActiveRecord::StatementInvalid => e
+      return redirect_to @group, notice: t(:destroy_error_message)
+    end
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }

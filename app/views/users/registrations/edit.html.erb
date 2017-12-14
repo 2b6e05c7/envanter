@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <%= f.label :locale %><br />
-      <%= f.select :locale, User.locales.keys.map { |locale| [ t(locale.humanize), locale ] }, {}, class: "form-control" %>
+      <%= f.select :locale, User.locales.keys.map { |locale| [ t(locale), locale ] }, {}, class: "form-control" %>
     </div>
 
     <div class="form-group">

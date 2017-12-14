@@ -8,6 +8,7 @@ class PanelController < ApplicationController
   end
 
   def debits
+    @debits = Debit.all
   end
 
   def logs

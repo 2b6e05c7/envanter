@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :products, through: :debits
   enum role: [ :staff, :admin ]
   enum locale: [ :en, :tr ]
+
+  def full_name
+    first_name + " " + last_name
+  end
 end

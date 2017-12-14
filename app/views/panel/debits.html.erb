@@ -1,1 +1,42 @@
-<h1>Debits</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/"><%= t(:dashboard) %></a>
+  </li>
+  <li class="breadcrumb-item active"><%= t(:debits) %></li>
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-database"></i> <%= t(:listing_debits) %>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th><%= t(:product) %></th>
+            <th><%= t(:user_group) %></th>
+            <th><%= t(:expiration) %></th>
+            <th><%= t(:status) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @debits.each do |debit| %>
+          <tr>
+            <td><%= debit.product.name %></td>
+            <td>
+              <% if debit.user %>
+              <%= debit.user.full_name %>
+              <% else %>
+              <%= debit.group.name %>
+              <% end %>
+            </td>
+            <td><%= debit.end || "-" %></td>
+            <td><%= t("debit_#{debit.status}") %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

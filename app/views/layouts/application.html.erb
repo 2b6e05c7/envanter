@@ -18,6 +18,8 @@
   <link href="/sb-admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="/sb-admin/css/sb-admin.css" rel="stylesheet">
+  <link href="/sb-admin/vendor/toastr/toastr.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -55,7 +57,7 @@
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="/groups">
-            <i class="fa fa-fw fa-users"></i>
+            <i class="fa fa-fw fa-group"></i>
             <span class="nav-link-text"><%= t(:groups) %></span>
           </a>
         </li>
@@ -176,15 +178,16 @@
         </li> -->
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#logoutModal">
-            <i class="fa fa-fw fa-sign-out"></i><%= t(:logout) %></a>
+            <i class="fa fa-fw fa-sign-out"></i><%= t(:logout) %>
+          </a>
         </li>
       </ul>
     </div>
   </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p> -->
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
     <!-- /.container-fluid-->
@@ -212,7 +215,7 @@
           </div>
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal"><%= t(:cancel) %></button>
             <%= link_to t(:logout), destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
           </div>
         </div>
@@ -227,11 +230,23 @@
     <script src="/sb-admin/vendor/chart.js/Chart.min.js"></script>
     <script src="/sb-admin/vendor/datatables/jquery.dataTables.js"></script>
     <script src="/sb-admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="/sb-admin/vendor/toastr/toastr.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="/sb-admin/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="/sb-admin/js/sb-admin-datatables.min.js"></script>
     <script src="/sb-admin/js/sb-admin-charts.min.js"></script>
+    <script type="text/javascript">
+      toastr.options.closeButton = true;
+      _notice = $( ".notice" ).text();
+      if (_notice.length > 0) {
+        toastr.success(_notice);
+      }
+      _alert = $( ".alert" ).text();
+      if (_alert.length > 0) {
+        toastr.error(_alert);
+      }
+    </script>
   </div>
 </body>
 

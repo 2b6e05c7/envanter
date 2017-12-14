@@ -1,4 +1,3 @@
-<!-- Breadcrumbs-->
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
@@ -9,34 +8,159 @@
   <li class="breadcrumb-item active"><%= @product.name %></li>
 </ol>
 
-<p>
-  <strong>Template:</strong>
-  <%= @product.template.name %>
-</p>
+<div class="card mb-3">
+  <div class="card-header" style="text-align:center;">
+    <i class="fa fa-info-circle"></i><b> <%= @product.name %>&nbsp;&nbsp;<%= t(:product_info) %></b>
+  </div>
+  <div class="card-body">
+    <p>
+      <strong><%= t(:template) %>:</strong>
+      <%= @product.template.name %>
+    </p>
 
-<p>
-  <strong>Company:</strong>
-  <%= @product.company %>
-</p>
+    <p>
+      <strong><%= t(:company) %>:</strong>
+      <%= @product.company %>
+    </p>
 
-<p>
-  <strong>Properties:</strong>
-  <%= @product.properties %>
-</p>
+    <p>
+      <strong><%= t(:properties) %>:</strong>
+      <%= @product.properties %>
+    </p>
 
-<p>
-  <strong>Year:</strong>
-  <%= @product.year %>
-</p>
+    <p>
+      <strong><%= t(:year) %>:</strong>
+      <%= @product.year %>
+    </p>
 
-<p>
-  <strong>Warranty:</strong>
-  <%= @product.warranty %>
-</p>
+    <p>
+      <strong><%= t(:warranty) %> (<%= t(:month) %>):</strong>
+      <%= @product.warranty %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @product.status %>
-</p>
+    <p>
+      <strong><%= t(:warranty_end) %>:</strong>
+      <%= @product.warranty_end %>
+    </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %>
+    <p>
+      <strong><%= t(:status) %>:</strong>
+      <%= t(@product.status) %>
+    </p>
+
+    <p>
+      <strong><%= t(:current_debit) %>:</strong>
+      <% if @debit %>
+      <% if @debit.user %>
+      <%= @debit.user.full_name %>
+      <% else %>
+      <%= @debit.group.name %>
+      <% end %>
+      <% else %>
+      Yok
+      <% end %>
+    </p>
+
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-cube"></i> <%= t(:listing_debits) %>
+    <div class="pull-right">
+      <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToUserModal" style="color: #FFF;">
+        <%= t(:debit_to_user) %>
+      </a>
+      <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToGroupModal" style="color: #FFF;">
+        <%= t(:debit_to_group) %>
+      </a>
+    </div>
+  </div>
+  <div class="card-body">
+    <% if @debits.any? %>
+    <div class="table-responsive">
+      <table class="table table-bordered" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th><%= t(:user_group) %></th>
+            <th><%= t(:end_date) %></th>
+            <th><%= t(:status) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @debits.each do |debit| %>
+          <tr>
+            <td>
+              <% if debit.user %>
+              <%= debit.user.full_name %>
+              <% else %>
+              <%= debit.group.name %>
+              <% end %>
+            </td>
+            <td><%= debit.end || "-" %></td>
+            <td><%= t("debit_#{debit.status}") %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% else %>
+    <p><%= t(:no_debits) %></p>
+    <% end %>
+  </div>
+</div>
+
+<div class="modal fade" id="debitToGroupModal" tabindex="-1" role="dialog" aria-labelledby="debitToGroupModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <%= form_tag(debit_to_group_product_path, method: "post") do |form| %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="debitToGroupModalLabel"><%= t(:change_debit) %></h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <center>
+          <%= t(:choose_group_to_debit) %>
+          <div class="form-group">
+            <%= select_tag :group_id, options_from_collection_for_select(@groups, :id, :name), class: "form-control" %>
+          </div>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal"><%= t(:cancel) %></button>
+        <%= submit_tag t(:save), class: "btn btn-primary" %>
+      </div>
+      <% end  %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="debitToUserModal" tabindex="-1" role="dialog" aria-labelledby="debitToUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <%= form_tag(debit_to_user_product_path, method: "post") do |form| %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="debitToUserModalLabel"><%= t(:change_debit) %></h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <center>
+          <%= t(:choose_user_to_debit) %>
+          <div class="form-group">
+            <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :full_name), class: "form-control" %>
+          </div>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal"><%= t(:cancel) %></button>
+        <%= submit_tag t(:save), class: "btn btn-primary" %>
+      </div>
+      <% end  %>
+    </div>
+  </div>
+
+  <%= link_to t(:edit), edit_product_path(@product) %>

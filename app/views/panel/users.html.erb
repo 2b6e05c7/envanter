@@ -1,4 +1,3 @@
-<!-- Breadcrumbs-->
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
@@ -6,29 +5,28 @@
   <li class="breadcrumb-item active"><%= t(:users) %></li>
 </ol>
 
-<p id="notice"><%= notice %></p>
-
 <div class="card mb-3">
   <div class="card-header">
-    <i class="fa fa-group"></i> <%= t(:listing_users) %></div>
+    <i class="fa fa-user-circle"></i> <%= t(:listing_users) %></div>
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th><%= t(:first_name) %></th>
-            <th><%= t(:last_name) %></th>
+            <th><%= t(:full_name) %></th>
             <th><%= t(:email) %></th>
             <th><%= t(:role) %></th>
+            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= user.first_name %></td>
-              <td><%= user.last_name %></td>
+              <td><%= user.full_name %></td>
               <td><%= user.email %></td>
               <td><%= user.role %></td>
+              <td><%= link_to t(:show), nil %></td>
+              <td><%= link_to t(:edit), nil %></td>
             </tr>
           <% end %>
         </tbody>
