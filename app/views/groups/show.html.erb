@@ -9,8 +9,6 @@
   <li class="breadcrumb-item active"><%= @group.name %></li>
 </ol>
 
-<p id="notice"><%= notice %></p>
-
 <div class="card mb-3">
   <div class="card-header">
     <i class="fa fa-group"></i> <%= t(:members) %></div>
@@ -41,6 +39,42 @@
       <% else %>
       <p>Bu grupta hiçbir kullanıcı yok.</p>
       <% end %>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-database"></i> <%= t(:listing_debits) %>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th><%= t(:product) %></th>
+              <th><%= t(:start_date) %></th>
+              <th><%= t(:end_date) %></th>
+              <th><%= t(:status) %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @debits.each do |debit| %>
+            <tr>
+              <td><%= debit.product.name %></td>
+              <td>Eklenecek</td>
+              <td><%= debit.end || "-" %></td>
+              <td><%= t(:"debit_#{debit.status}") %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <center>
+          <%= page_entries_info @debits %>
+        </center>
+        <center>
+          <%= will_paginate @debits, inner_window: 1, outer_window: 1 %>
+        </center>
+      </div>
     </div>
   </div>
 

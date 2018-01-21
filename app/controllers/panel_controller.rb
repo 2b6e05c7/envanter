@@ -1,10 +1,9 @@
+# Admin Panel Controller
 class PanelController < ApplicationController
-
-  def index
-  end
+  def index; end
 
   def users
-    @users = User.paginate(:page => params[:page], :per_page => 10)
+    @users = User.page(params[:page])
   end
 
   def user
@@ -14,11 +13,10 @@ class PanelController < ApplicationController
   end
 
   def debits
-    @debits = Debit.paginate(:page => params[:page], :per_page => 10)
+    @debits = Debit.page(params[:page])
   end
 
   def logs
-    @activities = PublicActivity::Activity.paginate(:page => params[:page], :per_page => 10)
+    @activities = PublicActivity::Activity.page(params[:page])
   end
-
 end

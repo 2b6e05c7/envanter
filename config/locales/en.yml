@@ -86,6 +86,7 @@ en:
   #Groups
   groups: "Groups"
   group: "Group"
+  group_name: "Group Name"
   new_group: "New Group"
   editing_group: "Editing Group"
   listing_groups: "Listing Groups"

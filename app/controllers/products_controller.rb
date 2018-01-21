@@ -1,19 +1,19 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :debit_to_group, :debit_to_user]
-  before_action :set_templates, only: [:new, :edit]
+  before_action :set_product, only: %i[show edit update destroy debit_to_group debit_to_user]
+  before_action :set_templates, only: %i[new edit]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.page(params[:page])
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    @debits = Debit.where(product: @product)
-    @debit = @debits.find_by(status: true) # NOTE Supposition ~ Max 1 Record
-    @groups = Group.all
+    @debits = @product.debits.page(params[:page])
+    @debit = @product.debits.find_by(status: true) # NOTE Supposition ~ Max 1 Record
+    @groups = Group.all # FIXME !!!!! HIGH SYSTEM RESOURCE USAGE
     @users = User.all # FIXME !!!!! HIGH SYSTEM RESOURCE USAGE
   end
 
@@ -23,14 +23,12 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: t(:created_message, something: t(:product)) }
@@ -61,11 +59,16 @@ class ProductsController < ApplicationController
   def destroy
     begin
       @product.destroy
-    rescue ActiveRecord::StatementInvalid => e
+    rescue ActiveRecord::StatementInvalid
       return redirect_to products_path, alert: t(:destroy_error_message)
     end
     respond_to do |format|
-      format.html { redirect_to products_url, notice: t(:destroyed_message, something: t(:product)) }
+      format.html {
+        redirect_to(
+          products_url,
+          notice: t(:destroyed_message, something: t(:product))
+        )
+      }
       format.json { head :no_content }
     end
   end
@@ -74,36 +77,50 @@ class ProductsController < ApplicationController
   def debit_to_group
     return redirect_to @product, notice: t(:debit_save_error) if Group.find(params[:group_id]).nil?
     update_last_debit
-    Debit.create(group_id: params[:group_id].to_i, status: true, product: @product)
+    Debit.create(
+      group_id: params[:group_id].to_i,
+      status: true, product: @product
+    )
     redirect_to @product, notice: t(:debit_save_success)
   end
 
   def debit_to_user
     return redirect_to @product, notice: t(:debit_save_error) if User.find(params[:user_id]).nil?
     update_last_debit
-    Debit.create(user_id: params[:user_id].to_i, status: true, product: @product)
+    Debit.create(
+      user_id: params[:user_id].to_i,
+      status: true, product: @product
+    )
     redirect_to @product, notice: t(:debit_save_success)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    def set_templates
-      @templates = Template.all
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    def update_last_debit
-      @last_debit = @product.debits.last
-      if @last_debit && @last_debit.status
-        @last_debit.update(end: Date.current, status: false)
-      end
-    end
+  def set_templates
+    @templates = Template.all
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:name, :template_id, :company, :properties, :year, :warranty, :warranty_end)
-    end
+  def update_last_debit
+    @last_debit = @product.debits.last
+    return nil unless @last_debit && @last_debit.status
+    @last_debit.update(end: Date.current, status: false)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_params
+    params.require(:product).permit(
+      :name,
+      :template_id,
+      :company,
+      :properties,
+      :year,
+      :warranty,
+      :warranty_end
+    )
+  end
 end

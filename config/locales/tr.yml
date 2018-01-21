@@ -32,6 +32,14 @@ tr:
     next_label: "İleri >"
     page_gap: "…"
     page_entries_info:
+      single_page:
+        zero:  "Hiç kayıt bulunamadı."
+        one:   "Toplam 1 kayıt bulundu."
+        other: "%{count} kaydın tamamı görüntüleniyor."
+      single_page_html:
+        zero:  "Hiç kayıt bulunamadı."
+        one:   "Toplam <b>1</b> kayıt bulundu."
+        other: "<b>%{count}</b> kaydın tamamı görüntüleniyor."
       multi_page: "%{count} kayıttan %{from} - %{to} arasındakiler gösteriliyor."
       multi_page_html: "%{count} kayıttan <b>%{from}&nbsp;-&nbsp;%{to}</b> arasındakiler gösteriliyor."
   en: "İngilizce"
@@ -91,6 +99,7 @@ tr:
   #Groups
   groups: "Gruplar"
   group: "Grup"
+  group_name: "Grup Adı"
   new_group: "Yeni Grup"
   editing_group: "Grup Düzenleme"
   listing_groups: "Gruplar Listeleniyor"
