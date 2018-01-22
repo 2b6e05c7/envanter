@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.page(params[:page])
+    authorize @groups
   end
 
   # GET /groups/1
@@ -16,6 +17,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    authorize @group
   end
 
   # GET /groups/1/edit
@@ -25,7 +27,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-
+    authorize @group
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: t(:created_message, something: t(:group)) }
@@ -57,7 +59,7 @@ class GroupsController < ApplicationController
     begin
       @group.destroy
     rescue ActiveRecord::StatementInvalid
-      return redirect_to @group, notice: t(:destroy_error_message)
+      return redirect_to @group, alert: t(:destroy_error_message)
     end
     respond_to do |format|
       format.html { redirect_to groups_url, notice: t(:destroyed_message, something: t(:group)) }
@@ -70,6 +72,7 @@ class GroupsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_group
     @group = Group.find(params[:id])
+    authorize @group
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

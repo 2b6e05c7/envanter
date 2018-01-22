@@ -1,5 +1,5 @@
-# Admin Panel Controller
 class PanelController < ApplicationController
+  before_action :verify_policy
   def index; end
 
   def users
@@ -12,11 +12,21 @@ class PanelController < ApplicationController
     @debits = Debit.where(user: @user)
   end
 
+  def my_debits
+    @debits = current_user.debits.page(params[:page])
+  end
+
   def debits
     @debits = Debit.page(params[:page])
   end
 
   def logs
     @activities = PublicActivity::Activity.page(params[:page])
+  end
+
+  private
+
+  def verify_policy
+    authorize self
   end
 end

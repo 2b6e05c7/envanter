@@ -113,6 +113,7 @@ tr:
   listing_templates: "Şablonlar Listeleniyor"
   #Debits
   debits: "Zimmet Kayıtları"
+  my_debits: "Zimmet Kayıtlarım"
   debit: "Zimmet"
   debit_save_success: "Zimmetleme işlemi başarıyla tamamlandı."
   debit_save_error: "Zimmetleme işlemi sırasında bir hata oluştu !"

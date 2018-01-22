@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Envanter - <%= t(:login) %></title>
+  <link href="/sb-admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/sb-admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/sb-admin/css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body style="background: url(/images/background.jpg); background-repeat: round;">
+  <div class="container">
+    <div class="mx-auto mt-5">
+      <center>
+      <img src="/images/uzem.png" width="20%">
+    </center>
+    </div>
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header"><%= t(:login) %></div>
+      <div class="card-body">
+        <%= yield %>
+        <div class="text-center">
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/sb-admin/vendor/jquery/jquery.min.js"></script>
+  <script src="/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+</body>
+
+</html>

@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.page(params[:page])
+    authorize @products
   end
 
   # GET /products/1
@@ -20,6 +21,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    authorize @product
   end
 
   # GET /products/1/edit
@@ -29,6 +31,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    authorize @product
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: t(:created_message, something: t(:product)) }
@@ -63,12 +66,7 @@ class ProductsController < ApplicationController
       return redirect_to products_path, alert: t(:destroy_error_message)
     end
     respond_to do |format|
-      format.html {
-        redirect_to(
-          products_url,
-          notice: t(:destroyed_message, something: t(:product))
-        )
-      }
+      format.html { redirect_to products_url, notice: t(:destroyed_message, something: t(:product)) }
       format.json { head :no_content }
     end
   end
@@ -99,6 +97,7 @@ class ProductsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_product
     @product = Product.find(params[:id])
+    authorize @product
   end
 
   def set_templates

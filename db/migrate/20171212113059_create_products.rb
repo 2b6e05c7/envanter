@@ -7,8 +7,8 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.text :properties
       t.integer :year
       t.integer :warranty
+      t.date :warranty_end
       t.integer :status, default: 0
-
       t.timestamps
     end
   end

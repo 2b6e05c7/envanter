@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :groups, through: :membership
   has_many :debits
   has_many :products, through: :debits
-  enum role: %i[staff admin]
+  enum role: %i[admin coordinator staff]
   enum locale: %i[en tr]
 
   def full_name

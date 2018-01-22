@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :products do
     member do
       post :debit_to_group
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
 
   scope '/panel' do
     get :index, to: 'panel#index'
+    get :my_debits, to: 'panel#my_debits'
     get :'users/:id', to: 'panel#user'
     get :users, to: 'panel#users'
     get :debits, to: 'panel#debits'
@@ -24,5 +24,4 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
-
 end

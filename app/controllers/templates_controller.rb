@@ -5,6 +5,7 @@ class TemplatesController < ApplicationController
   # GET /templates.json
   def index
     @templates = Template.page(params[:page])
+    authorize @templates
   end
 
   # GET /templates/1
@@ -14,6 +15,7 @@ class TemplatesController < ApplicationController
   # GET /templates/new
   def new
     @template = Template.new
+    authorize @template
   end
 
   # GET /templates/1/edit
@@ -23,9 +25,10 @@ class TemplatesController < ApplicationController
   # POST /templates.json
   def create
     @template = Template.new(template_params)
+    authorize @template
     respond_to do |format|
       if @template.save
-        format.html { redirect_to @template, notice: 'Template was successfully created.' }
+        format.html { redirect_to @template, notice: t(:created_message, something: t(:template)) }
         format.json { render :show, status: :created, location: @template }
       else
         format.html { render :new }
@@ -39,7 +42,7 @@ class TemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @template.update(template_params)
-        format.html { redirect_to @template, notice: 'Template was successfully updated.' }
+        format.html { redirect_to @template, notice: t(:updated_message, something: t(:template)) }
         format.json { render :show, status: :ok, location: @template }
       else
         format.html { render :edit }
@@ -51,9 +54,13 @@ class TemplatesController < ApplicationController
   # DELETE /templates/1
   # DELETE /templates/1.json
   def destroy
-    @template.destroy
+    begin
+      @template.destroy
+    rescue ActiveRecord::StatementInvalid
+      return redirect_to templates_path, alert: t(:destroy_error_message)
+    end
     respond_to do |format|
-      format.html { redirect_to templates_url, notice: 'Template was successfully destroyed.' }
+      format.html { redirect_to templates_url, notice: t(:destroyed_message, something: t(:template)) }
       format.json { head :no_content }
     end
   end
@@ -63,6 +70,7 @@ class TemplatesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_template
     @template = Template.find(params[:id])
+    authorize @template
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

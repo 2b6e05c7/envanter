@@ -11,6 +11,8 @@ gem 'rails', '~> 5.1.4'
 gem 'sqlite3'
 # MySQL Gem
 gem 'mysql2'
+# Minimal authorization through OO design and pure Ruby classes
+gem 'pundit'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

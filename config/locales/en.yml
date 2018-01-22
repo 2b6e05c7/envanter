@@ -100,6 +100,7 @@ en:
   listing_templates: "Listing Templates"
   #Debits
   debits: "Debits"
+  my_debits: "My Debits"
   debit: "Debit"
   debit_save_success: "Debit entry is saved successfully."
   debit_save_error: "An error occurred while saving the debit entry !"
