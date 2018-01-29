@@ -31,6 +31,10 @@ en:
     previous_label: "< Previous"
     next_label: "Next >"
     page_gap: "…"
+  activity:
+    create: 'Created'
+    update: 'Edited'
+    destroy: 'Removed'
   en: "English"
   tr: "Turkish"
   dashboard: "Dashboard"
@@ -104,13 +108,12 @@ en:
   debit: "Debit"
   debit_save_success: "Debit entry is saved successfully."
   debit_save_error: "An error occurred while saving the debit entry !"
+  debit_remove_error: "An error occurred while removing the debit "
   current_debit: "Current Debit"
   user_group: "User / Group"
   start_date: "Start Date"
   end_date: "End Date"
   listing_debits: "Listing Debits"
-  debit_true: "Active"
-  debit_false: "Inactive"
   change_debit: "Change Current Debit"
   change_debit_alert: "If there is an active debit record then this will be inactive."
   debit_to_user: "Debit To User"
@@ -119,8 +122,19 @@ en:
   no_debits: "There are not any debit records."
   choose_user_to_debit: "Choose a user to debit."
   choose_group_to_debit: "Choose a group to debit."
+  active: "Active"
+  inactive: "Inactive"
+  pending: "Pending"
+  confirm_to_debit: "Confirm To Debit"
+  confirm_to_remove: "Confirm To Remove"
+  remove_debit: "Remove Debit"
   #Logs
   logs: "Logs"
+  listing_logs: "Listing Logs"
+  affected_content_type: "Affected Record Type"
+  user: "User"
+  action_type: "Process Type"
+  date: "Date"
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.

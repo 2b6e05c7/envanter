@@ -2,7 +2,7 @@
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
   </li>
-  <li class="breadcrumb-item active"><%= t(:debits) %></li>
+  <li class="breadcrumb-item active"><%= t(:my_debits) %></li>
 </ol>
 
 <div class="card mb-3">
@@ -24,9 +24,19 @@
           <% @debits.each do |debit| %>
           <tr>
             <td><%= debit.product.name %></td>
-            <td>Eklenecek</td>
+            <td><%= debit.start || "-" %></td>
             <td><%= debit.end || "-" %></td>
-            <td><%= t(:"debit_#{debit.status}") %></td>
+            <td>
+              <% if debit.pending? %>
+              <% if debit.start.nil? %>
+              <%= link_to t(:confirm_to_debit), confirm_my_debit_path(debit_id: debit.id) %>
+              <% else %>
+              <%= link_to t(:confirm_to_remove), confirm_my_debit_path(debit_id: debit.id) %>
+              <% end %>
+              <% else %>
+              <%= t(debit.status) %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>

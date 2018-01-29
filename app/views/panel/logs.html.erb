@@ -1,3 +1,39 @@
-<% @activities.each do |activity| %>
-<p><%= activity.to_json %></p>
-<% end %>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/"><%= t(:dashboard) %></a>
+  </li>
+  <li class="breadcrumb-item active"><%= t(:logs) %></li>
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-database"></i> <%= t(:listing_logs) %>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th><%= t(:affected_content_type) %></th>
+            <th><%= t(:user) %></th>
+            <th><%= t(:action_type) %></th>
+            <th><%= t(:date) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @logs.each do |log| %>
+          <tr>
+            <td><%= t(log.trackable_type.downcase) %></td>
+            <td><%= log.owner.full_name %></td>
+            <td><%= t(public_activity_view_for_key(log.key)) %></td>
+            <td><%= log.created_at %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <center>
+        <%= will_paginate @logs %>
+      </center>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update destroy debit_to_group debit_to_user]
+  before_action(
+    :set_product,
+    only: %i[
+      show edit update destroy debit_to_group debit_to_user remove_debit
+    ]
+  )
   before_action :set_templates, only: %i[new edit]
 
   # GET /products
@@ -13,9 +18,9 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @debits = @product.debits.page(params[:page])
-    @debit = @product.debits.find_by(status: true) # NOTE Supposition ~ Max 1 Record
-    @groups = Group.all # FIXME !!!!! HIGH SYSTEM RESOURCE USAGE
-    @users = User.all # FIXME !!!!! HIGH SYSTEM RESOURCE USAGE
+    @current_debit = @product.debits.last
+    @groups = Group.all # FIXME: HIGH SYSTEM RESOURCE USAGE
+    @users = User.all # FIXME: HIGH SYSTEM RESOURCE USAGE
   end
 
   # GET /products/new
@@ -71,25 +76,37 @@ class ProductsController < ApplicationController
     end
   end
 
-  # FIXME : "status: true" will be removed
   def debit_to_group
-    return redirect_to @product, notice: t(:debit_save_error) if Group.find(params[:group_id]).nil?
-    update_last_debit
+    return redirect_to @product, alert: t(:debit_save_error) if
+    Group.find(params[:group_id]).nil? || !@product.free?
+
     Debit.create(
       group_id: params[:group_id].to_i,
-      status: true, product: @product
+      product: @product,
+      status: :pending
     )
     redirect_to @product, notice: t(:debit_save_success)
   end
 
   def debit_to_user
-    return redirect_to @product, notice: t(:debit_save_error) if User.find(params[:user_id]).nil?
-    update_last_debit
+    return redirect_to @product, alert: t(:debit_save_error) if
+    User.find(params[:user_id]).nil? || !@product.free?
+
     Debit.create(
       user_id: params[:user_id].to_i,
-      status: true, product: @product
+      product: @product,
+      status: :pending
     )
     redirect_to @product, notice: t(:debit_save_success)
+  end
+
+  def remove_debit
+    current_debit = @product.debits.last
+    return redirect_to @product, alert: t(:debit_remove_error) unless
+    current_debit.active?
+    current_debit.status = :pending
+    current_debit.save
+    redirect_to @product
   end
 
   private
@@ -102,12 +119,6 @@ class ProductsController < ApplicationController
 
   def set_templates
     @templates = Template.all
-  end
-
-  def update_last_debit
-    @last_debit = @product.debits.last
-    return nil unless @last_debit && @last_debit.status
-    @last_debit.update(end: Date.current, status: false)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

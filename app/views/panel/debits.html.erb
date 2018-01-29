@@ -32,9 +32,9 @@
               <%= debit.group.name %>
               <% end %>
             </td>
-            <td>Eklenecek</td>
+            <td><%= debit.start || "-" %></td>
             <td><%= debit.end || "-" %></td>
-            <td><%= t(:"debit_#{debit.status}") %></td>
+            <td><%= t(debit.status) %></td>
           </tr>
           <% end %>
         </tbody>

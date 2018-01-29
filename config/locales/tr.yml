@@ -42,6 +42,10 @@ tr:
         other: "<b>%{count}</b> kaydın tamamı görüntüleniyor."
       multi_page: "%{count} kayıttan %{from} - %{to} arasındakiler gösteriliyor."
       multi_page_html: "%{count} kayıttan <b>%{from}&nbsp;-&nbsp;%{to}</b> arasındakiler gösteriliyor."
+  activity:
+    create: 'Oluşturuldu'
+    update: 'Düzenlendi'
+    destroy: 'Silindi'
   en: "İngilizce"
   tr: "Türkçe"
   dashboard: "Pano"
@@ -117,13 +121,12 @@ tr:
   debit: "Zimmet"
   debit_save_success: "Zimmetleme işlemi başarıyla tamamlandı."
   debit_save_error: "Zimmetleme işlemi sırasında bir hata oluştu !"
+  debit_remove_error: "Zimmet kaldırma hatası !"
   current_debit: "Mevcut Zimmet"
   user_group: "Kullanıcı / Grup"
   start_date: "Başlangıç Tarihi"
   end_date: "Bitiş Tarihi"
   listing_debits: "Zimmet Kayıtları Listeleniyor"
-  debit_true: "Aktif"
-  debit_false: "Pasif"
   change_debit: "Zimmet Değişikliği Yap"
   change_debit_alert: "Zimmetleme  işlemi, aktif bir zimmet kaydı varsa bunu pasifleştirecek."
   debit_to_user: "Kişiye Zimmetle"
@@ -132,5 +135,16 @@ tr:
   no_debits: "Herhangi bir zimmet kaydı bulunamadı."
   choose_user_to_debit: "Zimmetleme işlemi için bir kişi seçiniz."
   choose_group_to_debit: "Zimmetleme işlemi için bir grup seçiniz."
+  active: "Aktif"
+  inactive: "Pasif"
+  pending: "Bekliyor"
+  confirm_to_debit: "Zimmet Onayı"
+  confirm_to_remove: "Kaldırma Onayı"
+  remove_debit: "Zimmeti Kaldır"
   #Logs
   logs: "Sistem Kayıtları"
+  listing_logs: "Sistem Kayıtları Listeleniyor"
+  affected_content_type: "Etkilenen Kayıt Türü"
+  user: "Kullanıcı"
+  action_type: "İşlem Türü"
+  date: "Tarih"

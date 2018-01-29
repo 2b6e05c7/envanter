@@ -48,11 +48,6 @@
       <%= form.date_field :warranty_end, id: :product_warranty_end, class: "form-control" %>
     </div>
 
-    <!-- <div class="form-group">
-      <%= form.label :status %>
-      <%= form.select :status, Product.statuses.keys.map { |status| [ t(status), status ] }, {}, class: "form-control" %>
-    </div> -->
-
     <div class="form-group">
       <%= form.submit nil, class: "btn btn-primary" %>
     </div>

@@ -3,11 +3,14 @@ Rails.application.routes.draw do
     member do
       post :debit_to_group
       post :debit_to_user
+      get :remove_debit
     end
   end
 
   resources :templates
   resources :groups
+
+  get :panel, to: 'panel#index'
   root 'panel#index'
 
   scope '/panel' do
@@ -16,6 +19,8 @@ Rails.application.routes.draw do
     get :'users/:id', to: 'panel#user'
     get :users, to: 'panel#users'
     get :debits, to: 'panel#debits'
+    get :confirm_my_debit, to: 'panel#confirm_my_debit'
+    get :confirm_debit_of_my_group, to: 'panel#confirm_debit_of_my_group'
     get :logs, to: 'panel#logs'
   end
 

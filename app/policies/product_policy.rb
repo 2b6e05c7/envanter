@@ -1,6 +1,10 @@
 class ProductPolicy < ApplicationPolicy
   def index?
-    user.admin?
+    user.admin? || user.coordinator?
+  end
+
+  def show?
+    true
   end
 
   def create?
@@ -8,19 +12,23 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    return true if user.admin?
+    user.admin?
   end
 
   def destroy?
-    return true if user.admin?
+    user.admin?
   end
 
   def debit_to_user?
-    return true if user.admin?
+    user.admin?
   end
 
   def debit_to_group?
-    return true if user.admin?
+    user.admin?
+  end
+
+  def remove_debit?
+    user.admin?
   end
 
   private

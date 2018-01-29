@@ -26,6 +26,14 @@ class PanelControllerPolicy
     user.admin?
   end
 
+  def confirm_my_debit?
+    true
+  end
+
+  def confirm_debit_of_my_group?
+    user.admin? || user.coordinator?
+  end
+
   def logs?
     user.admin?
   end

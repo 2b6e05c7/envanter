@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214100724) do
+ActiveRecord::Schema.define(version: 20180129112638) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(version: 20171214100724) do
     t.bigint "user_id"
     t.bigint "group_id"
     t.bigint "product_id"
-    t.boolean "status"
+    t.integer "status"
     t.date "end"
+    t.date "start"
     t.index ["group_id"], name: "index_debits_on_group_id"
     t.index ["product_id"], name: "index_debits_on_product_id"
     t.index ["user_id"], name: "index_debits_on_user_id"

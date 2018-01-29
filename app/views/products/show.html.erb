@@ -49,13 +49,13 @@
     </p>
 
     <p>
-      <% if @debit %>
-        <strong><%= t(:current_debit) %>:</strong>
-        <% if @debit.user %>
-          <%= @debit.user.full_name %>
-        <% else %>
-          <%= @debit.group.name %>
-        <% end %>
+      <% if @current_debit %>
+      <strong><%= t(:current_debit) %>:</strong>
+      <% if @current_debit.user %>
+      <%= @current_debit.user.full_name %>
+      <% else %>
+      <%= @current_debit.group.name %>
+      <% end %>
       <% end %>
     </p>
 
@@ -66,6 +66,9 @@
   <div class="card-header">
     <i class="fa fa-cube"></i> <%= t(:listing_debits) %>
     <div class="pull-right">
+      <% unless @current_debit.nil? %>
+      <%= link_to t(:remove_debit), remove_debit_product_path(debit_id: @current_debit.id) %>
+      <% end %>
       <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToUserModal" style="color: #FFF;">
         <%= t(:debit_to_user) %>
       </a>
@@ -81,6 +84,7 @@
         <thead>
           <tr>
             <th><%= t(:user_group) %></th>
+            <th><%= t(:start_date) %></th>
             <th><%= t(:end_date) %></th>
             <th><%= t(:status) %></th>
           </tr>
@@ -95,12 +99,19 @@
               <%= debit.group.name %>
               <% end %>
             </td>
+            <td><%= debit.start || "-" %></td>
             <td><%= debit.end || "-" %></td>
-            <td><%= t("debit_#{debit.status}") %></td>
+            <td><%= t(debit.status) %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
+      <center>
+        <%= page_entries_info @debits %>
+      </center>
+      <center>
+        <%= will_paginate @debits %>
+      </center>
     </div>
     <% else %>
     <p><%= t(:no_debits) %></p>
@@ -130,7 +141,7 @@
         <button class="btn btn-secondary" type="button" data-dismiss="modal"><%= t(:cancel) %></button>
         <%= submit_tag t(:save), class: "btn btn-primary" %>
       </div>
-      <% end  %>
+      <% end %>
     </div>
   </div>
 </div>
