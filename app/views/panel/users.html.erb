@@ -16,16 +16,15 @@
             <th><%= t(:full_name) %></th>
             <th><%= t(:email) %></th>
             <th><%= t(:role) %></th>
-            <th colspan="2"></th>
+            <th colspan="1"></th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= user.full_name %></td>
+              <td><%= link_to user.full_name, "/panel/users/#{user.id}" %></td>
               <td><%= user.email %></td>
               <td><%= user.role %></td>
-              <td><%= link_to t(:show), "/panel/users/#{user.id}" %></td>
               <td><%= link_to t(:edit), nil %></td>
             </tr>
           <% end %>

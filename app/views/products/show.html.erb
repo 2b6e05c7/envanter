@@ -131,12 +131,15 @@
   </div>
 </div>
 
+<%= link_to t(:edit), edit_product_path(@product) %>
+
+
 <div class="modal fade" id="debitToGroupModal" tabindex="-1" role="dialog" aria-labelledby="debitToGroupModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <%= form_tag(debit_to_group_product_path, method: "post") do |form| %>
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="debitToGroupModalLabel"><%= t(:change_debit) %></h5>
+        <h5 class="modal-title" id="debitToGroupModalLabel"><%= t(:create_debit_request) %></h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">X</span>
         </button>
@@ -163,7 +166,7 @@
     <%= form_tag(debit_to_user_product_path, method: "post") do |form| %>
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="debitToUserModalLabel"><%= t(:change_debit) %></h5>
+        <h5 class="modal-title" id="debitToUserModalLabel"><%= t(:create_debit_request) %></h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">X</span>
         </button>
@@ -183,5 +186,3 @@
       <% end  %>
     </div>
   </div>
-
-  <%= link_to t(:edit), edit_product_path(@product) %>

@@ -31,6 +31,7 @@
         <thead>
           <tr>
             <th><%= t(:product_name) %></th>
+            <th><%= t(:start_date) %></th>
             <th><%= t(:end_date) %></th>
             <th><%= t(:status) %></th>
           </tr>
@@ -39,8 +40,9 @@
           <% @debits.each do |debit| %>
           <tr>
             <td><%= debit.product.name %></td>
+            <td><%= debit.start || "-" %></td>
             <td><%= debit.end || "-" %></td>
-            <td><%= t("debit_#{debit.status}") %></td>
+            <td><%= t(debit.status) %></td>
           </tr>
           <% end %>
         </tbody>

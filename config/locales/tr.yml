@@ -116,6 +116,7 @@ tr:
   new_template: "Yeni Şablon"
   editing_template: "Şablon Düzenleme"
   listing_templates: "Şablonlar Listeleniyor"
+  select_template: "Şablon seçiniz"
   #Debits
   debits: "Zimmet Kayıtları"
   my_debits: "Zimmet Kayıtlarım"
@@ -129,8 +130,6 @@ tr:
   start_date: "Başlangıç Tarihi"
   end_date: "Bitiş Tarihi"
   listing_debits: "Zimmet Kayıtları Listeleniyor"
-  change_debit: "Zimmet Değişikliği Yap"
-  change_debit_alert: "Zimmetleme  işlemi, aktif bir zimmet kaydı varsa bunu pasifleştirecek."
   debit_to_user: "Kişiye Zimmetle"
   debit_to_group: "Gruba Zimmetle"
   month: "Ay"
@@ -143,6 +142,7 @@ tr:
   confirm_to_debit: "Zimmet Onayı"
   confirm_to_remove: "Kaldırma Onayı"
   remove_debit: "Zimmeti Kaldır"
+  create_debit_request: "Zimmetleme İsteği Oluştur"
   cancel_debit_request: "Zimmet İsteğini İptal Et"
   #Logs
   logs: "Sistem Kayıtları"

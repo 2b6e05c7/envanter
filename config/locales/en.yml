@@ -103,6 +103,7 @@ en:
   new_template: "New Template"
   editing_template: "Editing Template"
   listing_templates: "Listing Templates"
+  select_template: "Select template"
   #Debits
   debits: "Debits"
   my_debits: "My Debits"
@@ -116,8 +117,6 @@ en:
   start_date: "Start Date"
   end_date: "End Date"
   listing_debits: "Listing Debits"
-  change_debit: "Change Current Debit"
-  change_debit_alert: "If there is an active debit record then this will be inactive."
   debit_to_user: "Debit To User"
   debit_to_group: "Debit To Group"
   month: "Month"
@@ -130,6 +129,7 @@ en:
   confirm_to_debit: "Confirm To Debit"
   confirm_to_remove: "Confirm To Remove"
   remove_debit: "Remove Debit"
+  change_debit: "Create Debit Request"
   cancel_debit_request: "Cancel Debit Request"
   #Logs
   logs: "Logs"
