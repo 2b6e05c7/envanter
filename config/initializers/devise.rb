@@ -6,7 +6,8 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'fe0542cfa5b92eb2b11a6f8f10c11ba35ac2d3ed87444d780979384bd0e49b660feb1184e2a4a612ece0fb286a6b177b7d86a43695eb09b80967b44d5b64b9b1'
+  # config.secret_key = 'fe0542cfa5b92eb2b11a6f8f10c11ba35ac2d3ed87444d780979384bd'\
+  # '0e49b660feb1184e2a4a612ece0fb286a6b177b7d86a43695eb09b80967b44d5b64b9b1'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -42,8 +43,10 @@ Devise.setup do |config|
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
-  # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
-  # The same considerations mentioned for authentication_keys also apply to request_keys.
+  # if you set :request_keys to [:subdomain],
+  # :subdomain will be used on authentication.
+  # The same considerations mentioned for authentication_keys
+  # also apply to request_keys.
   # config.request_keys = []
 
   # Configure which authentication keys should be case-insensitive.
@@ -101,7 +104,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 11. If
-  # using other algorithms, it sets how many times you want the password to be hashed.
+  # using other algorithms, it sets how many times you want the password to be hashed
   #
   # Limiting the stretches to just one in testing will increase the performance of
   # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
@@ -111,7 +114,8 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'f2fd2178ee988f7c4159f5075a53fc40d29c415bf9f1f6306524fc246758ed88f04eb3c981bd7364763b2de2c94e3d6be8868c011693818ccc3ac99887d838c7'
+  # config.pepper = 'f2fd2178ee988f7c4159f5075a53fc40d29c415bf9f1f6306524fc246758e'\
+  # 'd88f04eb3c981bd7364763b2de2c94e3d6be8868c011693818ccc3ac99887d838c7'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -136,7 +140,7 @@ Devise.setup do |config|
   # config.confirm_within = 3.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
-  # initial account confirmation) to be applied. Requires additional unconfirmed_email
+  # initial account confirmation) to be applied.Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
   config.reconfirmable = true
@@ -213,7 +217,7 @@ Devise.setup do |config|
   # config.sign_in_after_reset_password = true
 
   # ==> Configuration for :encryptable
-  # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
+  # Allow you to use another hashing or encryption algorithm besides bcrypt (default)
   # You can use :sha1, :sha512 or algorithms from others authentication tools as
   # :clearance_sha1, :authlogic_sha512 (then you should set stretches above to 20
   # for default behavior) and :restful_authentication_sha1 (then you should set

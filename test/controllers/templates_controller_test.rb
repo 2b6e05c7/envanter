@@ -5,40 +5,44 @@ class TemplatesControllerTest < ActionDispatch::IntegrationTest
     @template = templates(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get templates_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_template_url
     assert_response :success
   end
 
-  test "should create template" do
+  test 'should create template' do
     assert_difference('Template.count') do
-      post templates_url, params: { template: { name: @template.name, properties: @template.properties } }
+      post templates_url, params: {
+        template: { name: @template.name, properties: @template.properties }
+      }
     end
 
     assert_redirected_to template_url(Template.last)
   end
 
-  test "should show template" do
+  test 'should show template' do
     get template_url(@template)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_template_url(@template)
     assert_response :success
   end
 
-  test "should update template" do
-    patch template_url(@template), params: { template: { name: @template.name, properties: @template.properties } }
+  test 'should update template' do
+    patch template_url(@template), params: {
+      template: { name: @template.name, properties: @template.properties }
+    }
     assert_redirected_to template_url(@template)
   end
 
-  test "should destroy template" do
+  test 'should destroy template' do
     assert_difference('Template.count', -1) do
       delete template_url(@template)
     end

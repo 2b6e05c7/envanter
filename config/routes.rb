@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :templates
   resources :groups
 
-  get :panel, to: 'panel#index'
   root 'panel#index'
 
   scope '/panel' do

@@ -25,7 +25,6 @@ class PanelController < ApplicationController
     @debits = Debit.page(params[:page])
   end
 
-  # FIXME: To Localize Keys
   def logs
     @logs = PublicActivity::Activity.page(params[:page])
   end

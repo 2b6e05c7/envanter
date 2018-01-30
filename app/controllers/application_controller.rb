@@ -13,9 +13,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # TODO: Localization
   def user_not_authorized
-    redirect_to(root_path, alert: 'Bu eylem için yetkili değilsiniz!')
+    redirect_to(root_path, alert: t(:user_not_authorized))
   end
 
   def layout_by_resource

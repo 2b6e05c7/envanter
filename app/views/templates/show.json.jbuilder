@@ -1,1 +1,1 @@
-json.partial! "templates/template", template: @template
+json.partial! 'templates/template', template: @template

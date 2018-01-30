@@ -27,7 +27,6 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-    authorize @group
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: t(:created_message, something: t(:group)) }
@@ -69,13 +68,11 @@ class GroupsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_group
     @group = Group.find(params[:id])
     authorize @group
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def group_params
     params.require(:group).permit(:name)
   end

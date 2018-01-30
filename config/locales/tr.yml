@@ -83,6 +83,7 @@ tr:
   sign_out: "Çıkış Yap"
   remember_me: "Beni Hatırla"
   forgot_your_password: "Şifrenizi mi unuttunuz?"
+  user_not_authorized: "Bu işlemi yapmaya yetkili değilsiniz!"
   # Products
   products: "Ürünler"
   product: "Ürün"
@@ -120,8 +121,8 @@ tr:
   my_debits: "Zimmet Kayıtlarım"
   debit: "Zimmet"
   debit_save_success: "Zimmetleme işlemi başarıyla tamamlandı."
-  debit_save_error: "Zimmetleme işlemi sırasında bir hata oluştu !"
-  debit_remove_error: "Zimmet kaldırma hatası !"
+  debit_save_error: "Zimmetleme işlemi sırasında bir hata oluştu!"
+  debit_remove_error: "Zimmet kaldırma hatası!"
   current_debit: "Mevcut Zimmet"
   user_group: "Kullanıcı / Grup"
   start_date: "Başlangıç Tarihi"

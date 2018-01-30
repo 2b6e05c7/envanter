@@ -1,2 +1,9 @@
 Documentation:
   Enabled: false
+Metrics/LineLength:
+  Max: 85
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+    - 'bin/*'
