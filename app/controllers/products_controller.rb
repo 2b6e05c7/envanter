@@ -79,24 +79,14 @@ class ProductsController < ApplicationController
   def debit_to_group
     return redirect_to @product, alert: t(:debit_save_error) if
     Group.find(params[:group_id]).nil? || !@product.free?
-
-    Debit.create(
-      group_id: params[:group_id].to_i,
-      product: @product,
-      status: :pending
-    )
+    create_debit_for_group
     redirect_to @product, notice: t(:debit_save_success)
   end
 
   def debit_to_user
     return redirect_to @product, alert: t(:debit_save_error) if
     User.find(params[:user_id]).nil? || !@product.free?
-
-    Debit.create(
-      user_id: params[:user_id].to_i,
-      product: @product,
-      status: :pending
-    )
+    create_debit_for_user
     redirect_to @product, notice: t(:debit_save_success)
   end
 
@@ -118,6 +108,29 @@ class ProductsController < ApplicationController
 
   def set_templates
     @templates = Template.all
+  end
+
+  def create_debit_for_user
+    Debit.create(
+      user_id: params[:user_id].to_i,
+      product: @product,
+      status: :pending
+    )
+    set_product_status_as_pending
+  end
+
+  def create_debit_for_group
+    Debit.create(
+      group_id: params[:group_id].to_i,
+      product: @product,
+      status: :pending
+    )
+    set_product_status_as_pending
+  end
+
+  def set_product_status_as_pending
+    @product.status = :pending
+    @product.save
   end
 
   def product_params

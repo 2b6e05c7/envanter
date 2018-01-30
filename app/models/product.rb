@@ -5,5 +5,5 @@ class Product < ApplicationRecord
   has_many :debits
   has_many :users, through: :debits
   has_many :groups, through: :debits
-  enum status: %i[free busy out_of_use]
+  enum status: %i[free busy out_of_use pending]
 end
