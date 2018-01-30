@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       post :debit_to_group
       post :debit_to_user
       get :remove_debit
+      get :cancel_debit_request
     end
   end
 

@@ -31,6 +31,10 @@ class ProductPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def cancel_debit_request?
+    user.admin?
+  end
+
   private
 
   def product

@@ -5,4 +5,9 @@ class Group < ApplicationRecord
   has_many :users, through: :membership
   has_many :debits
   has_many :products, through: :debits
+
+  def destroy
+    return false if users.any? || debits.any?
+    super
+  end
 end

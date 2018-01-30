@@ -29,9 +29,9 @@
             <td>
               <% if debit.pending? %>
               <% if debit.start.nil? %>
-              <%= link_to t(:confirm_to_debit), confirm_my_debit_path(debit_id: debit.id) %>
+              <%= link_to t(:confirm_to_debit), confirm_my_debit_path(debit_id: debit.id), class: "btn btn-sm btn-success" %>
               <% else %>
-              <%= link_to t(:confirm_to_remove), confirm_my_debit_path(debit_id: debit.id) %>
+              <%= link_to t(:confirm_to_remove), confirm_my_debit_path(debit_id: debit.id), class: "btn btn-sm btn-danger" %>
               <% end %>
               <% else %>
               <%= t(debit.status) %>

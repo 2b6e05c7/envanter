@@ -66,15 +66,27 @@
   <div class="card-header">
     <i class="fa fa-cube"></i> <%= t(:listing_debits) %>
     <div class="pull-right">
-      <% unless @current_debit.nil? %>
-      <%= link_to t(:remove_debit), remove_debit_product_path(debit_id: @current_debit.id) %>
+      <% if @current_debit %>
+        <% if @current_debit.active? %>
+          <%= link_to t(:remove_debit), remove_debit_product_path(debit_id: @current_debit.id), class: "btn btn-sm btn-primary" %>
+        <% elsif @current_debit.pending? %>
+          <%= link_to t(:cancel_debit_request), cancel_debit_request_product_path(debit_id: @current_debit.id), class: "btn btn-sm btn-primary" %>
+        <% else %>
+          <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToUserModal" style="color: #FFF;">
+            <%= t(:debit_to_user) %>
+          </a>
+          <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToGroupModal" style="color: #FFF;">
+            <%= t(:debit_to_group) %>
+          </a>
+        <% end %>
+      <% else %>
+        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToUserModal" style="color: #FFF;">
+          <%= t(:debit_to_user) %>
+        </a>
+        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToGroupModal" style="color: #FFF;">
+          <%= t(:debit_to_group) %>
+        </a>
       <% end %>
-      <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToUserModal" style="color: #FFF;">
-        <%= t(:debit_to_user) %>
-      </a>
-      <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#debitToGroupModal" style="color: #FFF;">
-        <%= t(:debit_to_group) %>
-      </a>
     </div>
   </div>
   <div class="card-body">

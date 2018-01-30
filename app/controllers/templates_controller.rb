@@ -28,7 +28,9 @@ class TemplatesController < ApplicationController
     authorize @template
     respond_to do |format|
       if @template.save
-        format.html { redirect_to @template, notice: t(:created_message, something: t(:template)) }
+        format.html do
+          redirect_to @template, notice: t(:created, model: t(:template))
+        end
         format.json { render :show, status: :created, location: @template }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class TemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @template.update(template_params)
-        format.html { redirect_to @template, notice: t(:updated_message, something: t(:template)) }
+        format.html { redirect_to @template, notice: t(:updated, model: t(:template)) }
         format.json { render :show, status: :ok, location: @template }
       else
         format.html { render :edit }
@@ -54,13 +56,15 @@ class TemplatesController < ApplicationController
   # DELETE /templates/1
   # DELETE /templates/1.json
   def destroy
-    begin
-      @template.destroy
-    rescue ActiveRecord::StatementInvalid
-      return redirect_to templates_path, alert: t(:destroy_error_message)
-    end
+    return redirect_to templates_path, alert: t(:destroy_error) unless
+    @template.destroy
+
     respond_to do |format|
-      format.html { redirect_to templates_url, notice: t(:destroyed_message, something: t(:template)) }
+      format.html do
+        redirect_to(
+          templates_url, notice: t(:destroyed, model: t(:template))
+        )
+      end
       format.json { head :no_content }
     end
   end

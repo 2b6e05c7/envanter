@@ -29,7 +29,9 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: t(:created_message, something: t(:group)) }
+        format.html do
+          redirect_to @group, notice: t(:created, model: t(:group))
+        end
         format.json { render :index, status: :created, location: @group }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: t(:updated_message, something: t(:group)) }
+        format.html { redirect_to @group, notice: t(:updated, model: t(:group)) }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit }
@@ -55,13 +57,13 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    begin
-      @group.destroy
-    rescue ActiveRecord::StatementInvalid
-      return redirect_to @group, alert: t(:destroy_error_message)
-    end
+    return redirect_to groups_path, alert: t(:destroy_error) unless
+    @group.destroy
+
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: t(:destroyed_message, something: t(:group)) }
+      format.html do
+        redirect_to groups_url, notice: t(:destroyed, model: t(:group))
+      end
       format.json { head :no_content }
     end
   end

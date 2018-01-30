@@ -1,7 +1,7 @@
 Documentation:
   Enabled: false
 Metrics/LineLength:
-  Max: 85
+  Max: 90
 AllCops:
   Exclude:
     - 'db/schema.rb'
