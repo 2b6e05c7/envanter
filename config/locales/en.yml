@@ -117,6 +117,8 @@ en:
   start_date: "Start Date"
   end_date: "End Date"
   listing_debits: "Listing Debits"
+  personal_debits: "Personal Debits"
+  groups_debits: "Your Groups' Debits"
   debit_to_user: "Debit To User"
   debit_to_group: "Debit To Group"
   month: "Month"

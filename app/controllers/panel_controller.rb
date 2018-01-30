@@ -18,7 +18,8 @@ class PanelController < ApplicationController
   end
 
   def my_debits
-    @debits = current_user.debits.page(params[:page])
+    @my_debits = current_user.debits.page(params[:page])
+    @my_groups_debits = Debit.where(group_id: current_user.groups.ids).page(params[:page])
   end
 
   def debits

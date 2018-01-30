@@ -130,6 +130,8 @@ tr:
   start_date: "Başlangıç Tarihi"
   end_date: "Bitiş Tarihi"
   listing_debits: "Zimmet Kayıtları Listeleniyor"
+  personal_debits: "Kişisel Zimmet Kayıtlarınız"
+  groups_debits: "Gruplarınıza Ait Zimmet Kayıtları"
   debit_to_user: "Kişiye Zimmetle"
   debit_to_group: "Gruba Zimmetle"
   month: "Ay"
