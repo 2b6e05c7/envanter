@@ -8,9 +8,9 @@ class User < ApplicationRecord
     :validatable
   )
 
-  has_many :membership
+  has_many :membership, dependent: :destroy
   has_many :groups, through: :membership
-  has_many :debits
+  has_many :debits, dependent: :destroy
   has_many :products, through: :debits
 
   enum role: {

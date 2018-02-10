@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   mount_uploader :bill, BillUploader
 
   belongs_to :template
-  has_many :debits
+  has_many :debits, dependent: :destroy
   has_many :users, through: :debits
   has_many :groups, through: :debits
 

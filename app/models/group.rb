@@ -13,6 +13,9 @@ class Group < ApplicationRecord
   validates :name, :coordinator_id, presence: true
 
   def make_free_associated_products
-    Product.where(id: debits.where(status: :active).ids).update_all(status: :free)
+    Product.where(id: debits.where(status: :active).ids).find_each do |p|
+      p.status = :free
+      p.save
+    end
   end
 end
