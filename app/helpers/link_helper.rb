@@ -51,6 +51,6 @@ module LinkHelper
   # end
 
   def icon(icon, text)
-    ("<i class='fa fa-#{icon}'></i> " + text).html_safe
+    sanitize("<i class='fa fa-#{icon}'></i> " + text)
   end
 end
