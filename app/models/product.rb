@@ -17,6 +17,7 @@ class Product < ApplicationRecord
     :year,
     :warranty,
     :warranty_end,
+    :end_of_lifetime,
     presence: true
   )
 

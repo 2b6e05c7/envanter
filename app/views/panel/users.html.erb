@@ -24,8 +24,8 @@
             <tr>
               <td><%= link_to user.full_name, "/panel/users/#{user.id}" %></td>
               <td><%= user.email %></td>
-              <td><%= user.role %></td>
-              <td><%= link_to t(:edit), nil %></td>
+              <td><%= t(user.role) %></td>
+              <td><%= link_to_edit nil %></td>
             </tr>
           <% end %>
         </tbody>

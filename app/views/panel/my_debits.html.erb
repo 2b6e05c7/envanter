@@ -76,13 +76,13 @@
             <td><%= debit.end || "-" %></td>
             <td>
               <% if debit.pending? && !current_user.staff?  %>
-                <% if debit.start.nil?%>
-                  <%= link_to t(:confirm_to_debit), confirm_debit_of_my_group_path(debit_id: debit.id), class: "btn btn-sm btn-success" %>
-                <% else %>
-                  <%= link_to t(:confirm_to_remove), confirm_debit_of_my_group_path(debit_id: debit.id), class: "btn btn-sm btn-danger" %>
-                <% end %>
+              <% if debit.start.nil?%>
+              <%= link_to t(:confirm_to_debit), confirm_debit_of_my_group_path(debit_id: debit.id), class: "btn btn-sm btn-success" %>
               <% else %>
-                <%= t(debit.status) %>
+              <%= link_to t(:confirm_to_remove), confirm_debit_of_my_group_path(debit_id: debit.id), class: "btn btn-sm btn-danger" %>
+              <% end %>
+              <% else %>
+              <%= t(debit.status) %>
               <% end %>
             </td>
           </tr>
@@ -100,5 +100,8 @@
 </div>
 
 <center>
-  <a class= "btn btn-md btn-primary" href="/panel/my_debits_for_print" target="_blank" >Yazdır</a>
+  <a class= "btn btn-sm btn-outline-primary" href="/panel/my_debits_for_print" target="_blank" >
+    <i class="fa fa-print"></i>
+    <%= t(:print) %>
+  </a>
 </center>

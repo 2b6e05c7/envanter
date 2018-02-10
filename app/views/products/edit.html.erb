@@ -1,4 +1,3 @@
-<!-- Breadcrumbs-->
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
@@ -11,4 +10,6 @@
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Show', @product %>
+<center>
+  <%= link_to_show @product %>
+</center>

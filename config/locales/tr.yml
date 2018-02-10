@@ -9,6 +9,7 @@ tr:
         year: "Satınalma Yılı"
         warranty: "Garanti Süresi (Ay)"
         warranty_end: "Garanti Bitişi"
+        end_of_lifetime: "Kullanım Ömrü Sonu"
         status: "Durum"
         bill: "Fatura"
         confirmation: "Onay"
@@ -25,6 +26,7 @@ tr:
         name: "Şablon Adı"
         properties: "Özellikler"
       group:
+        name: "Grup Adı"
         coordinator: "Koordinatör"
   helpers:
     submit:
@@ -58,9 +60,11 @@ tr:
   cancel: "İptal"
   system_status: "Sistem Durumu"
   view_details: "Detayları Görüntüle"
+  new: "Yeni"
   show: "Göster"
   edit: "Düzenle"
   update: "Güncelle"
+  destroy: "Sil"
   created: "%{model} başarıyla oluşturuldu."
   updated: "%{model} başarıyla güncellendi."
   destroyed: "%{model} başarıyla silindi."
@@ -71,6 +75,8 @@ tr:
   are_you_sure: "Emin misiniz?"
   confirm: "Onayla"
   #Users
+  first_name: "Ad"
+  last_name: "Soyad"
   users: "Kullanıcılar"
   listing_users: "Kullanıcılar Listeleniyor"
   remember_me: "Beni Hatırla"
@@ -83,6 +89,8 @@ tr:
   role: "Rol"
   admin: "Yönetici"
   staff: "Personel"
+  responsible: "Taşınır Kayıtçı"
+  manager: "Müdür"
   sign_up: "Kayıt Ol"
   sign_in: "Giriş Yap"
   sign_out: "Çıkış Yap"
@@ -103,6 +111,7 @@ tr:
   purchase_year: "Satınalma Yılı"
   warranty: "Garanti Süresi"
   warranty_end: "Garanti Bitişi"
+  end_of_lifetime: "Kullanım Ömrü Sonu"
   status: "Durum"
   free: "Boşta"
   busy: "Zimmetlenmiş"
@@ -122,7 +131,9 @@ tr:
   new_group: "Yeni Grup"
   editing_group: "Grup Düzenleme"
   listing_groups: "Gruplar Listeleniyor"
+  group_info: "Grup Bilgileri"
   members: "Üyeler"
+  coordinator: "Koordinatör"
   #Templates
   product_templates: "Ürün Şablonları"
   templates: "Şablonlar"

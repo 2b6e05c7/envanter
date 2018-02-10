@@ -3,6 +3,7 @@ class TemplatesController < ApplicationController
 
   def index
     @templates = Template.page(params[:page])
+    @products_count = @templates.map { |t| t.products.size }
     authorize @templates
   end
 

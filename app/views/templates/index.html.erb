@@ -1,4 +1,3 @@
-<!-- Breadcrumbs-->
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
@@ -10,7 +9,7 @@
   <div class="card-header">
     <i class="fa fa-group"></i> <%= t(:listing_templates) %>
     <div class="pull-right">
-      <%= link_to t(:new_template), new_template_path, class: "btn btn-sm btn-primary" %>
+      <%= link_to_new new_template_path %>
     </div>
   </div>
   <div class="card-body">
@@ -18,16 +17,18 @@
       <table class="table table-bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>Name</th>
+            <th><%= t(:name) %></th>
+            <th><%= t(:products) %></th>
             <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
-          <% @templates.each do |template| %>
+          <% @templates.each_with_index do |template, index| %>
             <tr>
               <td><b><u><%= link_to template.name, template %></u></b></td>
-              <td><%= link_to t(:edit), edit_template_path(template) %></td>
-              <td><%= link_to t(:delete), template, method: :delete, data: { confirm: t(:are_you_sure) } %></td>
+              <td><%= @products_counts[index] %></td>
+              <td><%= link_to_edit edit_template_path(template) %></td>
+              <td><%= link_to_destroy template %></td>
             </tr>
           <% end %>
         </tbody>

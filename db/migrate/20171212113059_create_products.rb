@@ -11,6 +11,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.integer :status, default: 0
       t.string :bill
       t.boolean :confirmation, default: true
+      t.integer :end_of_lifetime
       t.timestamps
     end
   end

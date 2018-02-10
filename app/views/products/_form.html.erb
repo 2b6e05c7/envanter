@@ -49,12 +49,17 @@
     </div>
 
     <div class="form-group">
+      <%= form.label :end_of_lifetime %>
+      <%= form.number_field :end_of_lifetime, id: :product_end_of_lifetime, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
       <%= form.label :bill %>
       <%= form.file_field :bill, id: :product_bill, class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= form.submit nil, class: "btn btn-primary" %>
+      <%= form.submit nil, class:"btn btn-outline-primary btn-sm" %>
     </div>
     <% end %>
   </div>

@@ -44,6 +44,11 @@
     </p>
 
     <p>
+      <strong><%= t(:end_of_lifetime) %>:</strong>
+      <%= @product.end_of_lifetime %>
+    </p>
+
+    <p>
       <strong><%= t(:status) %>:</strong>
       <%= t(@product.status) %>
     </p>
@@ -136,8 +141,10 @@
   </div>
 </div>
 
-<%= link_to t(:edit), edit_product_path(@product) %>
-
+<center>
+  <%= link_to_edit edit_product_path(@product) %>
+</center>
+<br/>
 
 <div class="modal fade" id="debitToGroupModal" tabindex="-1" role="dialog" aria-labelledby="debitToGroupModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

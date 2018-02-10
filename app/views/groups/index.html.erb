@@ -1,4 +1,3 @@
-<!-- Breadcrumbs-->
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
@@ -10,7 +9,7 @@
   <div class="card-header">
     <i class="fa fa-group"></i> <%= t(:listing_groups) %>
     <div class="pull-right">
-      <%= link_to t(:new_group), new_group_path, class: "btn btn-sm btn-primary" %>
+      <%= link_to_new new_group_path %>
     </div>
   </div>
   <div class="card-body">
@@ -19,6 +18,7 @@
         <thead>
           <tr>
             <th><%= t(:group_name) %></th>
+            <th><%= t(:coordinator) %></th>
             <th colspan="2"></th>
           </tr>
         </thead>
@@ -26,8 +26,9 @@
           <% @groups.each do |group| %>
             <tr>
               <td><b><u><%= link_to group.name, group %></u></b></td>
-              <td><%= link_to t(:edit), edit_group_path(group) %></td>
-              <td><%= link_to t(:destroy), group, method: :delete, data: { confirm: t(:are_you_sure) } %></td>
+              <td><%= group.coordinator.full_name %></td>
+              <td><%= link_to_edit edit_group_path(group) %></td>
+              <td><%= link_to_destroy group %></td>
             </tr>
           <% end %>
         </tbody>

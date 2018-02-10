@@ -9,6 +9,7 @@ en:
         year: "Purchase Year"
         warranty: "Warranty(Month)"
         warranty_end: "Warranty End"
+        end_of_lifetime: "End of Lifetime"
         status: "Status"
         bill: "Bill"
         confirmation: "Confirmation"
@@ -25,6 +26,7 @@ en:
         name: "Template Name"
         properties: "Properties"
       group:
+        name: "Name"
         coordinator: "Coordinator"
   helpers:
     submit:
@@ -45,9 +47,11 @@ en:
   cancel: "Cancel"
   system_status: "System Status"
   view_details: "View Details"
+  new: "New"
   show: "Show"
   edit: "Edit"
   update: "Update"
+  destroy: "Destroy"
   created: "%{model} was successfully created."
   updated: "%{model} was successfully updated."
   destroyed: "%{model} was successfully destroyed."
@@ -58,6 +62,8 @@ en:
   are_you_sure: "Are you sure?"
   confirm: "Confirm"
   #Users
+  first_name: "First Name"
+  last_name: "Last Name"
   users: "Users"
   listing_users: "Listing Users"
   remember_me: "Remember me"
@@ -70,6 +76,8 @@ en:
   role: "Role"
   admin: "Admin"
   staff: "Staff"
+  responsible: "Responsible"
+  manager: "Manager"
   sign_up: "Sign up"
   sign_in: "Sign in"
   sign_out: "Sign out"
@@ -90,6 +98,7 @@ en:
   purchase_year: "Purchase Year"
   warranty: "Warranty"
   warranty_end: "Warranty End"
+  end_of_lifetime: "End of Lifetime"
   status: "Status"
   free: "Free"
   busy: "Busy"
@@ -109,7 +118,9 @@ en:
   new_group: "New Group"
   editing_group: "Editing Group"
   listing_groups: "Listing Groups"
+  group_info: "Group Informations"
   members: "Members"
+  coordinator: "Coordinator"
   #Templates
   product_templates: "Product Templates"
   templates: "Templates"

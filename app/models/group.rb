@@ -8,6 +8,7 @@ class Group < ApplicationRecord
   has_many :users, through: :membership
   has_many :debits, dependent: :destroy
   has_many :products, through: :debits
+  belongs_to :coordinator, class_name: 'User'
 
   validates :name, :coordinator_id, presence: true
 

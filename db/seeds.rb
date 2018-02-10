@@ -1,19 +1,55 @@
 User.create(
   email: 'a@b.c',
   password: '123456',
-  first_name: 'Deneme',
-  last_name: 'Kullanıcısı',
+  first_name: 'Douglas',
+  last_name: 'Harper',
   role: :admin,
-  language: :tr
+  locale: :tr
+)
+
+User.create(
+  email: 'cliffberry@b.c',
+  password: '123456',
+  first_name: 'Cliff',
+  last_name: 'Berry',
+  role: :staff,
+  locale: :tr
+)
+
+User.create(
+  email: 'RussellMRedd@b.c',
+  password: '123456',
+  first_name: 'Russell',
+  last_name: 'Redd',
+  role: :responsible,
+  locale: :tr
+)
+
+User.create(
+  email: 'LisaRMiller@b.c',
+  password: '123456',
+  first_name: 'Lisa',
+  last_name: 'Miller',
+  role: :manager,
+  locale: :tr
 )
 
 Group.create(name: 'Sistem Yönetimi', coordinator_id: 1)
-Group.create(name: 'İçerik Geliştirme', coordinator_id: 1)
+Group.create(name: 'İçerik Geliştirme', coordinator_id: 2)
 Group.create(name: 'Halkla İlişkiler ve Destek', coordinator_id: 1)
-Group.create(name: 'Canlı Ders', coordinator_id: 1)
+Group.create(name: 'Canlı Ders', coordinator_id: 2)
 Group.create(name: 'Grafik ve Tasarım', coordinator_id: 1)
 
-Group.first.users << User.first
+Group.find(1).users << User.find(1)
+Group.find(3).users << User.find(1)
+Group.find(5).users << User.find(1)
+
+Group.find(2).users << User.find(2)
+Group.find(4).users << User.find(2)
+Group.find(5).users << User.find(2)
+
+Group.find(3).users << User.find(3)
+Group.find(3).users << User.find(4)
 
 Template.create(
   name: 'Bilgisayar',
@@ -49,7 +85,8 @@ Product.create(
   year: 2015,
   warranty: 24,
   status: 'free',
-  warranty_end: '2019-12-23'
+  warranty_end: '2019-12-23',
+  end_of_lifetime: 2025
 )
 
 Product.create(
@@ -60,7 +97,8 @@ Product.create(
   year: 2017,
   warranty: 36,
   status: 'free',
-  warranty_end: '2020-09-21'
+  warranty_end: '2020-09-21',
+  end_of_lifetime: 2022
 )
 
 Product.create(
@@ -71,7 +109,8 @@ Product.create(
   year: 2006,
   warranty: 12,
   status: 'free',
-  warranty_end: '2008-08-06'
+  warranty_end: '2008-08-06',
+  end_of_lifetime: 2019
 )
 
 Product.create(
@@ -82,5 +121,6 @@ Product.create(
   year: 2014,
   warranty: 24,
   status: 'free',
-  warranty_end: '2016-03-01'
+  warranty_end: '2016-03-01',
+  end_of_lifetime: 2024
 )

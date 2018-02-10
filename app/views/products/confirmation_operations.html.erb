@@ -2,15 +2,12 @@
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
   </li>
-  <li class="breadcrumb-item active"><%= t(:products) %></li>
+  <li class="breadcrumb-item active"><%= t(:confirmation_operations) %></li>
 </ol>
 
 <div class="card mb-3">
   <div class="card-header">
     <i class="fa fa-cube"></i> <%= t(:listing_products) %>
-    <div class="pull-right">
-      <%= link_to t(:new_product), new_product_path, class: "btn btn-sm btn-primary" %>
-    </div>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -23,6 +20,7 @@
             <th><%= t(:year) %></th>
             <th><%= t(:warranty) %> (<%= t(:month) %>)</th>
             <th><%= t(:warranty_end) %></th>
+            <th><%= t(:end_of_lifetime) %></th>
             <th><%= t(:status) %></th>
             <th><%= t(:confirmation) %></th>
             <th colspan="2"></th>
@@ -37,10 +35,11 @@
               <td><%= product.year %></td>
               <td><%= product.warranty %></td>
               <td><%= product.warranty_end %></td>
+              <td><%= product.end_of_lifetime %></td>
               <td><%= t(product.status) %></td>
-              <td><%= link_to t(:confirm), nil, data: { confirm: t(:are_you_sure) } %></td>
-              <td><%= link_to t(:edit), edit_product_path(product) %></td>
-              <td><%= link_to t(:delete), product, method: :delete, data: { confirm: t(:are_you_sure) } %></td>
+              <td><%= link_to_confirm nil%></td>
+              <td><%= link_to_edit edit_product_path(product) %></td>
+              <td><%= link_to_destroy product %></td>
             </tr>
           <% end %>
         </tbody>
