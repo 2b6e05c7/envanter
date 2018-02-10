@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Zimmet Belgesi</title>
+  <style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  input[type=checkbox] {
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    margin-left: 8px;
+    margin-top: 8px;
+  }
+  </style>
+</head>
+<body style="margin: 2%">
+  <div style="text-align:center">
+    <p style="text-align:right">Belge Tarihi: <%= Date.current %></p>
+    <img src="/images/omu.png" width="10%" />
+    <h2>Ondokuz Mayıs Üniversitesi</h2>
+    <h4>Kişi Zimmet Belgesi</h4>
+  </div>
+  <br/>
+  <p><b>Ad Soyad:</b> <%= current_user.full_name %></p>
+  <br/>
+  <h4>Kişisel Zimmetler</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Ürün</th>
+        <th>Başlangıç</th>
+        <th>Bitiş</th>
+        <th>Durum</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @my_debits.each do |debit| %>
+      <tr>
+        <td><%= debit.product.name %></td>
+        <td><%= debit.start || "-" %></td>
+        <td><%= debit.end || "-" %></td>
+        <td><%= t(debit.status) %></td>
+        <td><input type="checkbox"> Aldım</td>
+        <td><input type="checkbox"> Verdim</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <h4>Grup Zimmetleri</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Ürün</th>
+        <th>Grup</th>
+        <th>Başlangıç</th>
+        <th>Bitiş</th>
+        <th>Durum</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @my_groups_debits.each do |debit| %>
+      <tr>
+        <td><%= debit.product.name %></td>
+        <td><%= debit.group.name %></td>
+        <td><%= debit.start || "-" %></td>
+        <td><%= debit.end || "-" %></td>
+        <td><%= t(debit.status) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <div style="float: left; margin-left: 20%; text-align:center;">
+    <h3><u><b>Yönetici</b></u></h3>
+    <p><u>Ad Soyad</u></p> <br/>
+    <p><u>İmza</u></p><br/>
+  </div>
+  <div style="float: right; margin-right:20%; text-align:center;">
+    <h3><u><b>Kişi</b></u></h3>
+    <p><u>Ad Soyad</u></p>
+    <p><%= current_user.full_name %></p>
+    <p><u>İmza</u></p><br/>
+  </div>
+</body>
+</html>

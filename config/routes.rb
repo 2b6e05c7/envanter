@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   scope '/panel' do
     get :index, to: 'panel#index'
     get :my_debits, to: 'panel#my_debits'
+    get :my_debits_for_print, to: 'panel#my_debits_for_print'
     get :'users/:id', to: 'panel#user'
     get :users, to: 'panel#users'
     get :debits, to: 'panel#debits'

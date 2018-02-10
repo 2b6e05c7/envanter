@@ -5,6 +5,8 @@ class PanelController < ApplicationController
     only: %i[confirm_my_debit confirm_debit_of_my_group]
   )
 
+  layout false, only: [:my_debits_for_print]
+
   def index; end
 
   def users
@@ -20,6 +22,11 @@ class PanelController < ApplicationController
   def my_debits
     @my_debits = current_user.debits.page(params[:page])
     @my_groups_debits = Debit.where(group_id: current_user.groups.ids).page(params[:page])
+  end
+
+  def my_debits_for_print
+    @my_debits = current_user.debits
+    @my_groups_debits = Debit.where(group_id: current_user.groups.ids)
   end
 
   def debits

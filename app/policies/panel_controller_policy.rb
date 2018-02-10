@@ -22,6 +22,10 @@ class PanelControllerPolicy
     true
   end
 
+  def my_debits_for_print?
+    true
+  end
+
   def debits?
     user.admin?
   end
