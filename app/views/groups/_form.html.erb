@@ -17,6 +17,11 @@
       <%= form.text_field :name, id: :group_name, class: "form-control" %>
     </div>
 
+    <div class="form-group">
+      <%= form.label :coordinator %>
+      <%= form.collection_select :coordinator_id, @users, :id, :full_name, {}, { class: "form-control" } %>
+    </div>
+
     <div class="actions">
       <%= form.submit nil, class:"btn btn-primary" %>
     </div>

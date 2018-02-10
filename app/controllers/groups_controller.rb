@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
+  before_action :set_users, only: %i[new edit]
 
   def index
     @groups = Group.page(params[:page])
@@ -46,7 +47,11 @@ class GroupsController < ApplicationController
     authorize @group
   end
 
+  def set_users
+    @users = User.all
+  end
+
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :coordinator_id)
   end
 end

@@ -9,6 +9,17 @@ class Product < ApplicationRecord
   has_many :users, through: :debits
   has_many :groups, through: :debits
 
+  validates(
+    :name,
+    :template_id,
+    :company,
+    :properties,
+    :year,
+    :warranty,
+    :warranty_end,
+    presence: true
+  )
+
   enum status: {
     free: 0,
     busy: 1,

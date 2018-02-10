@@ -24,6 +24,8 @@ tr:
       template:
         name: "Şablon Adı"
         properties: "Özellikler"
+      group:
+        coordinator: "Koordinatör"
   helpers:
     submit:
       create: "Ekle"
@@ -35,7 +37,7 @@ tr:
     page_gap: "…"
     page_entries_info:
       single_page:
-        zero:  "Hiç kayıt bulunamadı."
+        zero:  "Hiç bir kayıt bulunamadı."
         one:   "Toplam 1 kayıt bulundu."
         other: "%{count} kaydın tamamı görüntüleniyor."
       single_page_html:

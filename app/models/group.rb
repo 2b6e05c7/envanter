@@ -9,6 +9,8 @@ class Group < ApplicationRecord
   has_many :debits, dependent: :destroy
   has_many :products, through: :debits
 
+  validates :name, :coordinator_id, presence: true
+
   def make_free_associated_products
     Product.where(id: debits.where(status: :active).ids).update_all(status: :free)
   end

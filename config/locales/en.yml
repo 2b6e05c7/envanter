@@ -24,6 +24,8 @@ en:
       template:
         name: "Template Name"
         properties: "Properties"
+      group:
+        coordinator: "Coordinator"
   helpers:
     submit:
       create: "Create"
