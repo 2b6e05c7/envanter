@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
   include Pundit
+
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   protect_from_forgery with: :exception
+
   layout :layout_by_resource
+
   before_action :authenticate_user!
   before_action :set_locale
 
@@ -18,7 +22,10 @@ class ApplicationController < ActionController::Base
   end
 
   def layout_by_resource
-    return 'devise' if devise_controller?
-    'application'
+    if devise_controller?
+      'devise'
+    else
+      'application'
+    end
   end
 end

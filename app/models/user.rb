@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise(
     :database_authenticatable,
     :registerable,
@@ -9,12 +7,22 @@ class User < ApplicationRecord
     :trackable,
     :validatable
   )
+
   has_many :membership
   has_many :groups, through: :membership
   has_many :debits
   has_many :products, through: :debits
-  enum role: %i[admin coordinator staff]
-  enum locale: %i[en tr]
+
+  enum role: {
+    admin: 0,
+    coordinator: 1,
+    staff: 2
+  }
+
+  enum locale: {
+    en: 0,
+    tr: 1
+  }
 
   def full_name
     first_name + ' ' + last_name

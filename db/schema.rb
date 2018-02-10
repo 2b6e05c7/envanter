@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129112638) do
+ActiveRecord::Schema.define(version: 20171212151534) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20180129112638) do
     t.bigint "user_id"
     t.bigint "group_id"
     t.bigint "product_id"
-    t.integer "status"
-    t.date "end"
+    t.integer "status", default: 0
     t.date "start"
+    t.date "end"
     t.index ["group_id"], name: "index_debits_on_group_id"
     t.index ["product_id"], name: "index_debits_on_product_id"
     t.index ["user_id"], name: "index_debits_on_user_id"
@@ -45,8 +45,10 @@ ActiveRecord::Schema.define(version: 20180129112638) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.bigint "coordinator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["coordinator_id"], name: "index_groups_on_coordinator_id"
   end
 
   create_table "memberships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,10 +67,10 @@ ActiveRecord::Schema.define(version: 20180129112638) do
     t.text "properties"
     t.integer "year"
     t.integer "warranty"
+    t.date "warranty_end"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "warranty_end"
     t.index ["template_id"], name: "index_products_on_template_id"
   end
 

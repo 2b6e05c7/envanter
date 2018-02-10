@@ -12,6 +12,32 @@ Group.create(name: 'Halkla İlişkiler ve Destek')
 Group.create(name: 'Canlı Ders')
 Group.create(name: 'Grafik ve Tasarım')
 
+Template.create(
+  name: 'Bilgisayar',
+  properties:  <<-HEREDOC
+  {
+    "ram": 0,
+    "memory_speed": 0,
+    "cpu": "",
+    "gpu": "",
+    "max_screen_resolution": 123,
+    "hard_drive": ""
+  }
+  HEREDOC
+)
+
+Template.create(
+  name: 'Mobilya',
+  properties:  <<-HEREDOC
+  {
+    "color": "",
+    "parts": 0,
+    "size": "",
+    "weight": "123"
+  }
+  HEREDOC
+)
+
 Product.create(
   name: 'Toshiba Satellite C55-A-1K0',
   template_id: 1,
@@ -54,30 +80,4 @@ Product.create(
   warranty: 24,
   status: 'free',
   warranty_end: '2016-03-01'
-)
-
-Template.create(
-  name: 'Bilgisayar',
-  properties:  <<-HEREDOC
-  {
-    "ram": 0,
-    "memory_speed": 0,
-    "cpu": "",
-    "gpu": "",
-    "max_screen_resolution": 123,
-    "hard_drive": ""
-  }
-  HEREDOC
-)
-
-Template.create(
-  name: 'Mobilya',
-  properties:  <<-HEREDOC
-  {
-    "color": "",
-    "parts": 0,
-    "size": "",
-    "weight": "123"
-  }
-  HEREDOC
 )

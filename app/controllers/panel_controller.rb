@@ -38,8 +38,10 @@ class PanelController < ApplicationController
 
   def confirm_debit_of_my_group
     debit = Debit.find(params[:debit_id])
-    return redirect_to my_debits_path unless
-    current_user.groups.include?(debit.group)
+    # TODO : User must be coordinator of associated group.
+    unless current_user.groups.include?(debit.group)
+      return redirect_to my_debits_path
+    end
     confirm_debit(debit)
   end
 
@@ -55,12 +57,13 @@ class PanelController < ApplicationController
     if debit.start.nil?
       debit.start = Date.current
       debit.status = :active
-      debit.product.update_attribute(:status, :busy)
+      debit.product.status = :busy
     else
       debit.end = Date.current
       debit.status = :inactive
-      debit.product.update_attribute(:status, :free)
+      debit.product.status = :free
     end
+    debit.product.save
     debit.save
   end
 

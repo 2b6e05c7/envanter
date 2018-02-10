@@ -1,18 +1,27 @@
 class Product < ApplicationRecord
   include PublicActivity::Model
   tracked owner: proc { |controller, _model| controller.current_user }
+
   belongs_to :template
   has_many :debits
   has_many :users, through: :debits
   has_many :groups, through: :debits
-  enum status: %i[free busy out_of_use]
+
+  enum status: {
+    free: 0,
+    busy: 1,
+    out_of_use: 2
+  }
 
   def any_pending_debit?
-    debits.where(status: :pending).exists?
+    debits.exists?(status: :pending)
   end
 
-  def destroy
-    return false if debits.any?
-    super
+  def can_debit?
+    free?
+  end
+
+  def destroyable?
+    debits.none?
   end
 end

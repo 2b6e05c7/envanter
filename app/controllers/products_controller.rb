@@ -9,15 +9,11 @@ class ProductsController < ApplicationController
   before_action :set_templates, only: %i[new edit]
   before_action :check_to_debit, only: %i[debit_to_user debit_to_group]
 
-  # GET /products
-  # GET /products.json
   def index
     @products = Product.page(params[:page])
     authorize @products
   end
 
-  # GET /products/1
-  # GET /products/1.json
   def show
     @debits = @product.debits.page(params[:page])
     @current_debit = @product.debits.last
@@ -25,60 +21,37 @@ class ProductsController < ApplicationController
     @users = User.all # FIXME: HIGH SYSTEM RESOURCE USAGE
   end
 
-  # GET /products/new
   def new
     @product = Product.new
     authorize @product
   end
 
-  # GET /products/1/edit
   def edit; end
 
-  # POST /products
-  # POST /products.json
   def create
     @product = Product.new(product_params)
     authorize @product
-    respond_to do |format|
-      if @product.save
-        format.html do
-          redirect_to @product, notice: t(:created, model: t(:product))
-        end
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.save
+      redirect_to @product, notice: t(:created, model: t(:product))
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: t(:updated, model: t(:product)) }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.update(product_params)
+      redirect_to @product, notice: t(:updated, model: t(:product))
+    else
+      render :edit
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
-    return redirect_to products_path, alert: t(:destroy_error) unless
-    @product.destroy
-
-    respond_to do |format|
-      format.html do
-        redirect_to(
-          products_url, notice: t(:destroyed, model: t(:product))
-        )
-      end
-      format.json { head :no_content }
+    if @product.destroyable?
+      @product.destroy
+      redirect_to products_url, notice: t(:destroyed, model: t(:product))
+    else
+      redirect_to products_path, alert: t(:destroy_error)
     end
   end
 

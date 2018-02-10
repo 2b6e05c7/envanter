@@ -1,9 +1,17 @@
+inherit_from: .rubocop_todo.yml
+
 Documentation:
   Enabled: false
 Metrics/LineLength:
   Max: 90
 AllCops:
   Exclude:
-    - 'db/schema.rb'
-    - 'db/migrate/*.rb'
+    - 'vendor/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'lib/**/*'
     - 'bin/*'
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'Rakefile'

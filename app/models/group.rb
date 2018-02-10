@@ -1,13 +1,15 @@
 class Group < ApplicationRecord
   include PublicActivity::Model
   tracked owner: proc { |controller, _model| controller.current_user }
-  has_many :membership
+
+  before_destroy :make_free_associated_products
+
+  has_many :membership, dependent: :destroy
   has_many :users, through: :membership
-  has_many :debits
+  has_many :debits, dependent: :destroy
   has_many :products, through: :debits
 
-  def destroy
-    return false if users.any? || debits.any?
-    super
+  def make_free_associated_products
+    Product.where(id: debits.where(status: :active).ids).update_all(status: :free)
   end
 end
