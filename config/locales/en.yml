@@ -10,6 +10,7 @@ en:
         warranty: "Warranty(Month)"
         warranty_end: "Warranty End"
         status: "Status"
+        bill: "Bill"
       user:
         first_name: "First Name"
         last_name: "Last Name"
@@ -88,6 +89,7 @@ en:
   free: "Free"
   busy: "Busy"
   out_of_use: "Out of Use"
+  bill: "Bill"
   #Groups
   groups: "Groups"
   group: "Group"

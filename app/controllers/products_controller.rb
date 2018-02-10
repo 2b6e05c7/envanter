@@ -132,7 +132,8 @@ class ProductsController < ApplicationController
       :properties,
       :year,
       :warranty,
-      :warranty_end
+      :warranty_end,
+      :bill
     )
   end
 end

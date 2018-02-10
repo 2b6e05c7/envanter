@@ -15,8 +15,7 @@ function getTemplateProperties(template_id) {
     url: '/templates/' + template_id + '.json',
     success: function(data){
       setProperties(data.properties);
-    },
-    error: function() { alert('Error'); }
+    }
   });
 };
 

@@ -49,6 +49,11 @@
     </p>
 
     <p>
+      <strong><%= t(:bill) %>:</strong>
+      <%= @product.bill.url %>
+    </p>
+
+    <p>
       <% if @current_debit %>
       <strong><%= t(:current_debit) %>:</strong>
       <% if @current_debit.user %>

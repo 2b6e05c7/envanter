@@ -10,6 +10,7 @@ tr:
         warranty: "Garanti Süresi (Ay)"
         warranty_end: "Garanti Bitişi"
         status: "Durum"
+        bill: "Fatura"
       user:
         first_name: "Ad"
         last_name: "Soyad"
@@ -101,6 +102,7 @@ tr:
   free: "Boşta"
   busy: "Zimmetlenmiş"
   out_of_use: "Kullanım Dışı"
+  bill: "Fatura"
   #Groups
   groups: "Gruplar"
   group: "Grup"
