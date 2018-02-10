@@ -1,6 +1,14 @@
 class ProductPolicy < ApplicationPolicy
   def index?
-    user.admin? || user.coordinator?
+    user.admin?
+  end
+
+  def filtered?
+    user.admin?
+  end
+
+  def confirmation_operations?
+    user.admin?
   end
 
   def show?

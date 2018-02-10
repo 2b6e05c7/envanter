@@ -14,6 +14,17 @@ class ProductsController < ApplicationController
     authorize @products
   end
 
+  def filtered
+    @status = params[:status] # Used in view.
+    @products = Product.where(status: @status).page(params[:page])
+    authorize @products
+  end
+
+  def confirmation_operations
+    @products = Product.where(confirmation: false).page(params[:page])
+    authorize @products
+  end
+
   def show
     @debits = @product.debits.page(params[:page])
     @current_debit = @product.debits.last

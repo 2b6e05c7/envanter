@@ -15,8 +15,9 @@ class User < ApplicationRecord
 
   enum role: {
     admin: 0,
-    coordinator: 1,
-    staff: 2
+    staff: 1,
+    responsible: 2,
+    manager: 3
   }
 
   enum locale: {

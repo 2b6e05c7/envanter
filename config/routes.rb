@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       get :remove_debit
       get :cancel_debit_request
     end
+
+    collection do
+      get :filtered
+      get :confirmation_operations
+    end
   end
 
   resources :templates

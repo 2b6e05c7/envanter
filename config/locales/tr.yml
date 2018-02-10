@@ -11,6 +11,7 @@ tr:
         warranty_end: "Garanti Bitişi"
         status: "Durum"
         bill: "Fatura"
+        confirmation: "Onay"
       user:
         first_name: "Ad"
         last_name: "Soyad"
@@ -66,6 +67,7 @@ tr:
   delete: "Sil"
   ready_to_leave: "Çıkış yapılacak?"
   are_you_sure: "Emin misiniz?"
+  confirm: "Onayla"
   #Users
   users: "Kullanıcılar"
   listing_users: "Kullanıcılar Listeleniyor"
@@ -86,6 +88,7 @@ tr:
   forgot_your_password: "Şifrenizi mi unuttunuz?"
   user_not_authorized: "Bu işlemi yapmaya yetkili değilsiniz!"
   # Products
+  all_products: "Tüm Ürünler"
   products: "Ürünler"
   product: "Ürün"
   product_name: "Ürün Adı"
@@ -102,7 +105,14 @@ tr:
   free: "Boşta"
   busy: "Zimmetlenmiş"
   out_of_use: "Kullanım Dışı"
+  ejected: "Çıkarılmış"
+  effaced: "İmha Edilmiş"
   bill: "Fatura"
+  filtered: "Filtrelenmiş"
+  confirmation: "Onay"
+  confirmation_operations: "Onay İşlemleri"
+  confirmation_true: "Onaylı"
+  confirmation_false: "Onay Bekliyor"
   #Groups
   groups: "Gruplar"
   group: "Grup"

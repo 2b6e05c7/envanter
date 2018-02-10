@@ -11,6 +11,7 @@ en:
         warranty_end: "Warranty End"
         status: "Status"
         bill: "Bill"
+        confirmation: "Confirmation"
       user:
         first_name: "First Name"
         last_name: "Last Name"
@@ -53,6 +54,7 @@ en:
   delete: "Delete"
   ready_to_leave: "Ready to Leave?"
   are_you_sure: "Are you sure?"
+  confirm: "Confirm"
   #Users
   users: "Users"
   listing_users: "Listing Users"
@@ -73,6 +75,7 @@ en:
   forgot_your_password: "Forgot your password?"
   user_not_authorized: "You are not authorized to do this!"
   # Products
+  all_products: "All Products"
   products: "Products"
   product: "Product"
   product_name: "Product Name"
@@ -89,7 +92,14 @@ en:
   free: "Free"
   busy: "Busy"
   out_of_use: "Out of Use"
+  ejected: "Ejected"
+  effaced: "Effaced"
   bill: "Bill"
+  filtered: "Filtered"
+  confirmation: "Confirmation"
+  confirmation_operations: "Confirmation Operations"
+  confirmation_true: "Confirmed"
+  confirmation_false: "Pending"
   #Groups
   groups: "Groups"
   group: "Group"

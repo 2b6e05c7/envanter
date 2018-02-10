@@ -47,10 +47,38 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Products">
-          <a class="nav-link" href="/products">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti">
             <i class="fa fa-fw fa-cube"></i>
             <span class="nav-link-text"><%= t(:products) %></span>
           </a>
+          <ul class="sidenav-second-level" id="collapseMulti">
+            <li>
+              <a href="/products/confirmation_operations"><%= t(:all_products) %></a>
+            </li>
+            <li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2"><%= t(:filtered) %></a>
+              <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                <li>
+                  <a href="/products/filtered?status=free"><%= t(:free) %></a>
+                </li>
+                <li>
+                  <a href="/products/filtered?status=busy"><%= t(:busy) %></a>
+                </li>
+                <li>
+                  <a href="/products/filtered?status=out_of_use"><%= t(:out_of_use) %></a>
+                </li>
+                <li>
+                  <a href="/products/filtered?status=ejected"><%= t(:ejected) %></a>
+                </li>
+                <li>
+                  <a href="/products/filtered?status=effaced"><%= t(:effaced) %></a>
+                </li>
+              </ul>
+            </li>
+           <li>
+              <a href="/products"><%= t(:confirmation_operations) %></a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Templates">
           <a class="nav-link" href="/templates">
