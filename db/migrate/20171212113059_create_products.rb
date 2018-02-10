@@ -10,6 +10,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.date :warranty_end
       t.integer :status, default: 0
       t.string :bill
+      t.boolean :confirmation, default: true
       t.timestamps
     end
   end

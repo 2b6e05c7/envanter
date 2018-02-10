@@ -12,7 +12,9 @@ class Product < ApplicationRecord
   enum status: {
     free: 0,
     busy: 1,
-    out_of_use: 2
+    out_of_use: 2,
+    ejected: 3,
+    effaced: 4
   }
 
   def any_pending_debit?
