@@ -1,13 +1,6 @@
-class DebitsControllerPolicy
-  attr_reader :user, :controller
-
-  def initialize(user, controller)
-    @user = user
-    @controller = controller
-  end
-
+class DebitPolicy < ApplicationPolicy
   def index?
-    true
+    !user.staff?
   end
 
   def my_debits?
@@ -19,19 +12,19 @@ class DebitsControllerPolicy
   end
 
   def confirm_my_debit?
-    true # Checked in controller and view.
+    record.user == user
   end
 
   def confirm_my_group_debit?
-    true # Checked in controller and view.
+    record.group.coordinator == user
   end
 
   def request_to_remove_my_debit?
-    true # Checked in controller and view.
+    record.user == user
   end
 
   def request_to_remove_my_group_debit?
-    true # Checked in controller and view.
+    record.group.coordinator == user
   end
 
   def request_debit?

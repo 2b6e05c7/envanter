@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   before_action :set_templates, only: %i[new edit]
 
   def index
-    @products = Product.order(id: :desc).page(params[:page])
+    @products = Product.page(params[:page])
     authorize @products
   end
 
@@ -77,14 +77,8 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(
-      :name,
-      :template_id,
-      :company,
-      :properties,
-      :year,
-      :warranty,
-      :warranty_end,
-      :bill
+      :name, :description, :template_id, :company,
+      :properties, :year, :warranty, :warranty_end, :bill
     )
   end
 end

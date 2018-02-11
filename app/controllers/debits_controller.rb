@@ -7,7 +7,6 @@ class DebitsController < ApplicationController
     confirm_to_remove_debit
     cancel_debit_request
   ]
-  before_action :verify_policy
 
   layout false, only: [:my_debits_for_print]
 
@@ -18,8 +17,11 @@ class DebitsController < ApplicationController
   # FOR ADMINS & RESPONSIBLES
   def request_debit
     product = Product.find(params[:product_id])
-    return error(t(:debit_save_error)) if product.any_pending_debit? || !product.free?
-    create_debit_request(product, params[:user_id], params[:group_id])
+    if product.any_pending_debit? || !product.free?
+      error(t(:debit_save_error), product)
+    else
+      create_debit_request(product, params[:user_id], params[:group_id])
+    end
   end
 
   def cancel_debit_request
@@ -33,7 +35,7 @@ class DebitsController < ApplicationController
     remove_debit
   end
 
-  # FOR EVERYBODY
+  # FOR ALL USERS
   def my_debits
     @my_debits = current_user.debits.page(params[:page])
     @my_groups_debits = Debit.where(group_id: current_user.groups.ids).page(params[:page])
@@ -44,38 +46,36 @@ class DebitsController < ApplicationController
     @my_groups_debits = Debit.where(group_id: current_user.groups.ids)
   end
 
-  # Current user must be user of debit.
+  # Current user must be user of debit. Checked by Pundit
   def confirm_my_debit
-    return redirect_to debits_my_debits_path if current_user != @debit.user
-    confirm_debit
-  end
-
-  # Current user must be coordinator of associated group.
-  def confirm_my_group_debit
-    return redirect_to debits_my_debits_path if current_user != @debit.group.coordinator
     confirm_debit
   end
 
   def request_to_remove_my_debit
-    return redirect_to debits_my_debits_path if current_user != @debit.user
     request_to_remove_debit
   end
 
+  # Current user must be coordinator of associated group. Checked by Pundit
+  def confirm_my_group_debit
+    confirm_debit
+  end
+
   def request_to_remove_my_group_debit
-    return redirect_to debits_my_debits_path if current_user != @debit.group.coordinator
     request_to_remove_debit
   end
 
   private
 
   def confirm_debit
-    return redirect_to debits_my_debits_path unless @debit.pending? || @debit.start.nil?
+    unless @debit.pending? || @debit.start.nil?
+      return redirect_to debits_my_debits_path, alert: t(:debit_confirm_error)
+    end
     @debit.start = Date.current
     @debit.status = :active
     @debit.product.status = :busy
     @debit.product.save
     @debit.save
-    redirect_to debits_my_debits_path
+    redirect_to debits_my_debits_path, notice: t(:debit_confirm_success)
   end
 
   def create_debit_request(product, user_id, group_id)
@@ -99,15 +99,12 @@ class DebitsController < ApplicationController
     redirect_to @debit.product, notice: t(:debit_remove_success)
   end
 
-  def error(message)
-    redirect_to @debit.product, alert: message
-  end
-
-  def verify_policy
-    authorize self
+  def error(message, path = @debit.product)
+    redirect_to path, alert: message
   end
 
   def set_debit
     @debit = Debit.find(params[:debit_id])
+    authorize @debit
   end
 end

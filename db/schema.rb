@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210152100) do
+ActiveRecord::Schema.define(version: 20171212151534) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20180210152100) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.string "description"
     t.bigint "template_id"
     t.string "company"
     t.text "properties"
@@ -69,20 +70,17 @@ ActiveRecord::Schema.define(version: 20180210152100) do
     t.integer "warranty"
     t.date "warranty_end"
     t.integer "status", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "attachment"
     t.string "bill"
     t.boolean "confirmation", default: true
-    t.integer "end_of_lifetime", null: false
+    t.integer "end_of_lifetime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["template_id"], name: "index_products_on_template_id"
   end
 
   create_table "templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "properties"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

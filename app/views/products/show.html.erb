@@ -13,6 +13,13 @@
     <i class="fa fa-info-circle"></i><b> <%= @product.name %>&nbsp;&nbsp;<%= t(:product_info) %></b>
   </div>
   <div class="card-body">
+    <% if @product.description %>
+      <p>
+        <strong><%= t(:description) %>:</strong>
+        <%= @product.description %>
+      </p>
+    <% end %>
+
     <p>
       <strong><%= t(:template) %>:</strong>
       <%= @product.template.name %>
@@ -53,10 +60,12 @@
       <%= t(@product.status) %>
     </p>
 
-    <p>
-      <strong><%= t(:bill) %>:</strong>
-      <%= @product.bill.url %>
-    </p>
+    <% if @product.bill.url %>
+      <p>
+        <strong><%= t(:bill) %>:</strong>
+        <%= link_to t(:show), @product.bill.url, target: '_blank' %>
+      </p>
+    <% end %>
 
     <p>
       <% if @current_debit %>

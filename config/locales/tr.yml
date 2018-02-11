@@ -3,6 +3,7 @@ tr:
     attributes:
       product:
         name: "Ad"
+        description: "Açıklama"
         template_id: "Şablon"
         company: "Firma"
         properties: "Özellikler"
@@ -150,6 +151,8 @@ tr:
   debit_save_error: "Zimmetleme isteği kaydedilirken bir hata oluştu!"
   debit_remove_success: "Zimmet başarıyla kaldırıldı."
   debit_remove_error: "Zimmet kaldırma isteği kaydedilirken bir hata oluştu!"
+  debit_confirm_success: "Zimmet isteği başarıyla onaylandı."
+  debit_confirm_error: "Zimmet isteği onaylanırken bir hata oluştu!"
   debit_cancel_success: "Zimmet isteği başarıyla iptal edildi."
   debit_cancel_error: "Zimmet isteği iptal edilirken bir hata oluştu!"
   current_debit: "Mevcut Zimmet"
@@ -174,6 +177,7 @@ tr:
   create_debit_request: "Zimmetleme İsteği Oluştur"
   cancel_debit_request: "Zimmet İsteğini İptal Et"
   print: "Yazdır"
+  description: "Açıklama"
   #Logs
   logs: "Sistem Kayıtları"
   listing_logs: "Sistem Kayıtları Listeleniyor"

@@ -3,6 +3,7 @@ en:
     attributes:
       product:
         name: "Name"
+        description: "Description"
         template_id: "Template"
         company: "Company"
         properties: "Properties"
@@ -137,6 +138,8 @@ en:
   debit_save_error: "An error occurred while saving the debit entry!"
   debit_remove_success: "Debit has been removed successfully."
   debit_remove_error: "An error occurred while removing the debit!"
+  debit_confirm_success: "Debit request has been confirmed successfully."
+  debit_confirm_error: "An error occurred while confirming the debit request!"
   debit_cancel_success: "Debit request has been cancelled successfully."
   debit_cancel_error: "An error occurred while canceling the debit request!"
   current_debit: "Current Debit"
@@ -161,6 +164,7 @@ en:
   change_debit: "Create Debit Request"
   cancel_debit_request: "Cancel Debit Request"
   print: "Print"
+  description: "Description"
   #Logs
   logs: "Logs"
   listing_logs: "Listing Logs"
