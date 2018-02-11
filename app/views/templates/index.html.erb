@@ -23,10 +23,10 @@
           </tr>
         </thead>
         <tbody>
-          <% @templates.each_with_index do |template, index| %>
+          <% @templates.each do |template| %>
             <tr>
               <td><b><u><%= link_to template.name, template %></u></b></td>
-              <td><%= @products_counts[index] %></td>
+              <td><%= template.products.size %></td>
               <td><%= link_to_edit edit_template_path(template) %></td>
               <td><%= link_to_destroy template %></td>
             </tr>

@@ -26,26 +26,4 @@ class ProductPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
-
-  def debit_to_user?
-    user.admin?
-  end
-
-  def debit_to_group?
-    user.admin?
-  end
-
-  def remove_debit?
-    user.admin?
-  end
-
-  def cancel_debit_request?
-    user.admin?
-  end
-
-  private
-
-  def product
-    record
-  end
 end

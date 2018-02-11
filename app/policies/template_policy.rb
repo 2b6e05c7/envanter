@@ -14,10 +14,4 @@ class TemplatePolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
-
-  private
-
-  def product
-    record
-  end
 end

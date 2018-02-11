@@ -27,14 +27,12 @@
             <td><%= debit.start || "-" %></td>
             <td><%= debit.end || "-" %></td>
             <td>
-              <% if debit.pending? %>
-              <% if debit.start.nil? %>
-              <%= link_to t(:confirm_to_debit), confirm_my_debit_path(debit_id: debit.id), class: "btn btn-sm btn-success" %>
+              <% if debit.active? %>
+                <%= link_to t(:remove_debit), debits_request_to_remove_my_debit_path(debit_id: debit.id), class: "btn btn-sm btn-danger" %>
+              <% elsif debit.pending? && debit.start.nil? %>
+                <%= link_to t(:confirm_to_debit), debits_confirm_my_debit_path(debit_id: debit.id), class: "btn btn-sm btn-success" %>
               <% else %>
-              <%= link_to t(:confirm_to_remove), confirm_my_debit_path(debit_id: debit.id), class: "btn btn-sm btn-danger" %>
-              <% end %>
-              <% else %>
-              <%= t(debit.status) %>
+                <%= t(debit.status) %>
               <% end %>
             </td>
           </tr>
@@ -75,14 +73,16 @@
             <td><%= debit.start || "-" %></td>
             <td><%= debit.end || "-" %></td>
             <td>
-              <% if debit.pending? && !current_user.staff?  %>
-              <% if debit.start.nil?%>
-              <%= link_to t(:confirm_to_debit), confirm_debit_of_my_group_path(debit_id: debit.id), class: "btn btn-sm btn-success" %>
+              <% if current_user == debit.group.coordinator  %>
+                <% if debit.active? %>
+                  <%= link_to t(:remove_debit), debits_request_to_remove_my_group_debit_path(debit_id: debit.id), class: "btn btn-sm btn-danger" %>
+                <% elsif debit.pending? && debit.start.nil? %>
+                  <%= link_to t(:confirm_to_debit), debits_confirm_my_group_debit_path(debit_id: debit.id), class: "btn btn-sm btn-success" %>
+                <% else %>
+                  <%= t(debit.status) %>
+                <% end %>
               <% else %>
-              <%= link_to t(:confirm_to_remove), confirm_debit_of_my_group_path(debit_id: debit.id), class: "btn btn-sm btn-danger" %>
-              <% end %>
-              <% else %>
-              <%= t(debit.status) %>
+                <%= t(debit.status) %>
               <% end %>
             </td>
           </tr>
@@ -100,7 +100,7 @@
 </div>
 
 <center>
-  <a class= "btn btn-sm btn-outline-primary" href="/panel/my_debits_for_print" target="_blank" >
+  <a class= "btn btn-sm btn-outline-primary" href="/debits/my_debits_for_print" target="_blank" >
     <i class="fa fa-print"></i>
     <%= t(:print) %>
   </a>

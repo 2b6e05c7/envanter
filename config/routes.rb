@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
-  resources :products do
-    member do
-      post :debit_to_group
-      post :debit_to_user
-      get :remove_debit
-      get :cancel_debit_request
-    end
+  get :debits, to: 'debits#index', as: :debits
+  namespace :debits do
+    get :my_debits
+    get :my_debits_for_print
 
+    get :confirm_my_debit
+    get :request_to_remove_my_debit
+    get :confirm_my_group_debit
+    get :request_to_remove_my_group_debit
+
+    post :request_debit
+    get :cancel_debit_request
+    get :confirm_to_remove_debit
+  end
+
+  resources :products do
     collection do
       get :filtered
       get :confirmation_operations
@@ -20,13 +28,8 @@ Rails.application.routes.draw do
 
   scope '/panel' do
     get :index, to: 'panel#index'
-    get :my_debits, to: 'panel#my_debits'
-    get :my_debits_for_print, to: 'panel#my_debits_for_print'
     get :'users/:id', to: 'panel#user'
     get :users, to: 'panel#users'
-    get :debits, to: 'panel#debits'
-    get :confirm_my_debit, to: 'panel#confirm_my_debit'
-    get :confirm_debit_of_my_group, to: 'panel#confirm_debit_of_my_group'
     get :logs, to: 'panel#logs'
   end
 

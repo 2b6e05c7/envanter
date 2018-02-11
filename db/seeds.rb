@@ -17,7 +17,34 @@ User.create(
 )
 
 User.create(
-  email: 'RussellMRedd@b.c',
+  email: 'ian@b.c',
+  password: '123456',
+  first_name: 'Ian',
+  last_name: 'Brown',
+  role: :staff,
+  locale: :tr
+)
+
+User.create(
+  email: 'ashley@b.c',
+  password: '123456',
+  first_name: 'Ashley',
+  last_name: 'Thomas',
+  role: :staff,
+  locale: :tr
+)
+
+User.create(
+  email: 'sharon@b.c',
+  password: '123456',
+  first_name: 'Sharon',
+  last_name: 'Wagner',
+  role: :staff,
+  locale: :tr
+)
+
+User.create(
+  email: 'russellredd@b.c',
   password: '123456',
   first_name: 'Russell',
   last_name: 'Redd',
@@ -26,7 +53,7 @@ User.create(
 )
 
 User.create(
-  email: 'LisaRMiller@b.c',
+  email: 'lisamiller@b.c',
   password: '123456',
   first_name: 'Lisa',
   last_name: 'Miller',
@@ -36,9 +63,9 @@ User.create(
 
 Group.create(name: 'Sistem Yönetimi', coordinator_id: 1)
 Group.create(name: 'İçerik Geliştirme', coordinator_id: 2)
-Group.create(name: 'Halkla İlişkiler ve Destek', coordinator_id: 1)
-Group.create(name: 'Canlı Ders', coordinator_id: 2)
-Group.create(name: 'Grafik ve Tasarım', coordinator_id: 1)
+Group.create(name: 'Halkla İlişkiler ve Destek', coordinator_id: 3)
+Group.create(name: 'Canlı Ders', coordinator_id: 4)
+Group.create(name: 'Grafik ve Tasarım', coordinator_id: 5)
 
 Group.find(1).users << User.find(1)
 Group.find(3).users << User.find(1)

@@ -148,7 +148,9 @@ tr:
   debit: "Zimmet"
   debit_save_success: "Zimmetleme isteği başarıyla oluşturuldu."
   debit_save_error: "Zimmetleme isteği kaydedilirken bir hata oluştu!"
+  debit_remove_success: "Zimmet başarıyla kaldırıldı."
   debit_remove_error: "Zimmet kaldırma isteği kaydedilirken bir hata oluştu!"
+  debit_cancel_success: "Zimmet isteği başarıyla iptal edildi."
   debit_cancel_error: "Zimmet isteği iptal edilirken bir hata oluştu!"
   current_debit: "Mevcut Zimmet"
   user_group: "Kullanıcı / Grup"
@@ -171,6 +173,7 @@ tr:
   remove_debit: "Zimmeti Kaldır"
   create_debit_request: "Zimmetleme İsteği Oluştur"
   cancel_debit_request: "Zimmet İsteğini İptal Et"
+  print: "Yazdır"
   #Logs
   logs: "Sistem Kayıtları"
   listing_logs: "Sistem Kayıtları Listeleniyor"

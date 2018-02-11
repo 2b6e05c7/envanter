@@ -1,5 +1,5 @@
 class PanelControllerPolicy
-  attr_reader :user, :ctrlr
+  attr_reader :user, :controller
 
   def initialize(user, controller)
     @user = user
@@ -11,40 +11,14 @@ class PanelControllerPolicy
   end
 
   def users?
-    user.admin? || user.coordinator?
+    true
   end
 
   def user?
-    user.admin? || user.coordinator?
-  end
-
-  def my_debits?
     true
-  end
-
-  def my_debits_for_print?
-    true
-  end
-
-  def debits?
-    user.admin?
-  end
-
-  def confirm_my_debit?
-    true
-  end
-
-  def confirm_debit_of_my_group?
-    user.admin? || user.coordinator?
   end
 
   def logs?
-    user.admin?
-  end
-
-  private
-
-  def product
-    record
+    user.admin? || user.manager?
   end
 end

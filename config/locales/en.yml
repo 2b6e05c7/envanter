@@ -135,7 +135,9 @@ en:
   debit: "Debit"
   debit_save_success: "Debit entry is saved successfully."
   debit_save_error: "An error occurred while saving the debit entry!"
+  debit_remove_success: "Debit has been removed successfully."
   debit_remove_error: "An error occurred while removing the debit!"
+  debit_cancel_success: "Debit request has been cancelled successfully."
   debit_cancel_error: "An error occurred while canceling the debit request!"
   current_debit: "Current Debit"
   user_group: "User / Group"
@@ -158,6 +160,7 @@ en:
   remove_debit: "Remove Debit"
   change_debit: "Create Debit Request"
   cancel_debit_request: "Cancel Debit Request"
+  print: "Print"
   #Logs
   logs: "Logs"
   listing_logs: "Listing Logs"
