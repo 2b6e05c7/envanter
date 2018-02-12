@@ -1,7 +1,10 @@
 class PanelController < ApplicationController
   before_action :verify_policy
 
-  def index; end
+  def index
+    set_logs_count
+    set_groups
+  end
 
   def users
     @users = User.page(params[:page])
@@ -18,6 +21,16 @@ class PanelController < ApplicationController
   end
 
   private
+
+  def set_logs_count
+    @logs_count = Array.new(14) do |i|
+      PublicActivity::Activity.all.where(created_at: (i + 1).day.ago..i.day.ago).size
+    end
+  end
+
+  def set_groups
+    @groups = Group.all.map { |g| { name: g.name, debits: g.debits.size } }.to_json
+  end
 
   def verify_policy
     authorize self

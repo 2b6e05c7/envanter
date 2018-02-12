@@ -2,6 +2,7 @@
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
   </li>
+  <li class="breadcrumb-item active"><%= t(:products) %></li>
   <li class="breadcrumb-item active"><%= t(:confirmation_operations) %></li>
 </ol>
 
@@ -17,13 +18,10 @@
             <th><%= t(:product_name) %></th>
             <th><%= t(:template) %></th>
             <th><%= t(:company) %></th>
-            <th><%= t(:year) %></th>
-            <th><%= t(:warranty) %> (<%= t(:month) %>)</th>
+            <th><%= t(:purchase_year) %></th>
             <th><%= t(:warranty_end) %></th>
-            <th><%= t(:end_of_lifetime) %></th>
             <th><%= t(:status) %></th>
-            <th><%= t(:confirmation) %></th>
-            <th colspan="2"></th>
+            <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
@@ -33,9 +31,7 @@
               <td><%= product.template.name %></td>
               <td><%= product.company %></td>
               <td><%= product.year %></td>
-              <td><%= product.warranty %></td>
               <td><%= product.warranty_end %></td>
-              <td><%= product.end_of_lifetime %></td>
               <td><%= t(product.status) %></td>
               <td><%= link_to_confirm nil%></td>
               <td><%= link_to_edit edit_product_path(product) %></td>

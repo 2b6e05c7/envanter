@@ -13,7 +13,7 @@ en:
         end_of_lifetime: "End of Lifetime"
         status: "Status"
         bill: "Bill"
-        confirmation: "Confirmation"
+        confirmation: "Status Confirmation"
       user:
         first_name: "First Name"
         last_name: "Last Name"
@@ -108,7 +108,7 @@ en:
   effaced: "Effaced"
   bill: "Bill"
   filtered: "Filtered"
-  confirmation: "Confirmation"
+  status_confirmation: "Status Confirmation"
   confirmation_operations: "Confirmation Operations"
   confirmation_true: "Confirmed"
   confirmation_false: "Pending"
@@ -122,6 +122,7 @@ en:
   group_info: "Group Informations"
   members: "Members"
   coordinator: "Coordinator"
+  group_debits: "Group Debits"
   #Templates
   product_templates: "Product Templates"
   templates: "Templates"
@@ -167,6 +168,7 @@ en:
   description: "Description"
   #Logs
   logs: "Logs"
+  logs_graph: "Logs Graph (Last 2 Weeks)"
   listing_logs: "Listing Logs"
   affected_content_type: "Affected Record Type"
   user: "User"

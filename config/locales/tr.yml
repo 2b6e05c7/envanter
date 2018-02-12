@@ -13,7 +13,7 @@ tr:
         end_of_lifetime: "Kullanım Ömrü Sonu"
         status: "Durum"
         bill: "Fatura"
-        confirmation: "Onay"
+        confirmation: "Durum Onayı"
       user:
         first_name: "Ad"
         last_name: "Soyad"
@@ -121,8 +121,8 @@ tr:
   effaced: "İmha Edilmiş"
   bill: "Fatura"
   filtered: "Filtrelenmiş"
-  confirmation: "Onay"
   confirmation_operations: "Onay İşlemleri"
+  status_confirmation: "Durum Onayı"
   confirmation_true: "Onaylı"
   confirmation_false: "Onay Bekliyor"
   #Groups
@@ -135,6 +135,7 @@ tr:
   group_info: "Grup Bilgileri"
   members: "Üyeler"
   coordinator: "Koordinatör"
+  group_debits: "Grup Zimmetleri"
   #Templates
   product_templates: "Ürün Şablonları"
   templates: "Şablonlar"
@@ -180,6 +181,7 @@ tr:
   description: "Açıklama"
   #Logs
   logs: "Sistem Kayıtları"
+  logs_graph: "Sistem Kayıtları Grafiği (Son 2 Hafta)"
   listing_logs: "Sistem Kayıtları Listeleniyor"
   affected_content_type: "Etkilenen Kayıt Türü"
   user: "Kullanıcı"

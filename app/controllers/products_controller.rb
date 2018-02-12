@@ -26,8 +26,8 @@ class ProductsController < ApplicationController
   def show
     @debits = @product.debits.order(id: :desc).page(params[:page])
     @current_debit = @product.debits.last
-    @groups = Group.all # FIXME: HIGH SYSTEM RESOURCE USAGE
-    @users = User.all # FIXME: HIGH SYSTEM RESOURCE USAGE
+    @groups = Group.all
+    @users = User.all
   end
 
   def new

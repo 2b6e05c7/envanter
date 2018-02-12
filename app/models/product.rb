@@ -33,10 +33,6 @@ class Product < ApplicationRecord
     debits.exists?(status: :pending)
   end
 
-  def can_debit?
-    free?
-  end
-
   def destroyable?
     debits.none?
   end
