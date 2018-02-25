@@ -1,7 +1,24 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
+  id: 1
+  name: Sistem Yönetimi
+  coordinator_id: 1
 
 two:
-  name: MyString
+  id: 2
+  name: İçerik Geliştirme
+  coordinator_id: 2
+
+three:
+  id: 3
+  name: Halkla İlişkiler ve Destek
+  coordinator_id: 3
+
+four:
+  id: 4
+  name: Canlı Ders
+  coordinator_id: 4
+
+five:
+  id: 5
+  name: Grafik ve Tasarım
+  coordinator_id: 5

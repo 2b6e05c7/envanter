@@ -39,5 +39,5 @@ jobs:
           paths:
             - vendor/bundle
       - run: bundle exec rake db:migrate
-      # - run: bundle exec rake test
+      - run: bundle exec rake test
       - run: bundle exec rubocop -R

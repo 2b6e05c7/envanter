@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  group: one
-  product: one
-  status: false
-  expiration: 2017-12-12
-
-two:
-  user: two
-  group: two
-  product: two
-  status: false
-  expiration: 2017-12-12
+# one:
+#   user: one
+#   group: nil
+#   product: one
+#   status: false
+#   start: 2017-12-12
+#   end: 2018-05-11
+#
+# two:
+#   user: two
+#   group: two
+#   product: two
+#   status: false
+#   start: 2017-08-12
+#   end: 2019-10-25

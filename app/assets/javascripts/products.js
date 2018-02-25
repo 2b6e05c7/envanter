@@ -1,7 +1,7 @@
 $(function() {
   if (window.location.pathname != '/products/new') { return; }
-  
-  getTemplateProperties( $( '#template option:selected' ).val() )
+
+  getTemplateProperties( $( '#product_template option:selected' ).val() )
 
   $('select').on('change', function (e) {
     getTemplateProperties( this.value )
@@ -20,5 +20,5 @@ function getTemplateProperties(template_id) {
 };
 
 function setProperties(data) {
-  $( '#properties' ).val(data);
+  $( '#product_properties' ).val(data);
 }

@@ -1,11 +1,62 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  id: 1
+  email: a@b.c
+  encrypted_password: $2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe
+  first_name: Douglas
+  last_name: Harper
+  role: :admin
+  locale: :tr
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+two:
+  id: 2
+  email: cliffberry@b.c
+  encrypted_password: $2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe
+  first_name: Cliff
+  last_name: Berry
+  role: :staff
+  locale: :tr
+
+three:
+  id: 3
+  email: ian@b.c
+  encrypted_password: $2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe
+  first_name: Ian
+  last_name: Brown
+  role: :staff
+  locale: :tr
+
+four:
+  id: 4
+  email: ashley@b.c
+  encrypted_password: $2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe
+  first_name: Ashley
+  last_name: Thomas
+  role: :staff
+  locale: :tr
+
+five:
+  id: 5
+  email: sharon@b.c
+  encrypted_password: $2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe
+  first_name: Sharon
+  last_name: Wagner
+  role: :staff
+  locale: :tr
+
+six:
+  id: 6
+  email: russellredd@b.c
+  encrypted_password: $2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe
+  first_name: Russell
+  last_name: Redd
+  role: :responsible
+  locale: :tr
+
+seven:
+  id: 7
+  email: lisamiller@b.c
+  encrypted_password: $2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe
+  first_name: Lisa
+  last_name: Miller
+  role: :manager
+  locale: :tr

@@ -1,1 +1,1 @@
-json.partial! 'templates/template', template: @template
+json.extract! @template, :id, :name, :properties

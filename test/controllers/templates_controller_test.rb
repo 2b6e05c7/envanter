@@ -43,7 +43,8 @@ class TemplatesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy template' do
-    assert_difference('Template.count', -1) do
+    # Template will be keeped because of relationed products.
+    assert_difference('Template.count', 0) do
       delete template_url(@template)
     end
 

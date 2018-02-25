@@ -1,19 +1,50 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  template: one
-  company: MyString
-  properties: MyText
-  year: 1
-  warranty: 1
-  status: 1
+  id: 1
+  name: Toshiba Satellite C55-A-1K0
+  template_id: 1
+  company: Toshiba
+  properties: {}
+  year: 2015
+  warranty: 24
+  status: free
+  warranty_end: 2019-12-23
+  end_of_lifetime: 2025
+
 
 two:
-  name: MyString
-  template: two
-  company: MyString
-  properties: MyText
-  year: 1
-  warranty: 1
-  status: 1
+  id: 2
+  name: Samsung N145 Plus
+  template_id: 1
+  company: Samsung
+  properties: {}
+  year: 2017
+  warranty: 36
+  status: free
+  warranty_end: 2020-09-21
+  end_of_lifetime: 2022
+
+
+three:
+  id: 3
+  name: XYZ 170x70 Masa
+  template_id: 2
+  company: XYZ
+  properties: {}
+  year: 2006
+  warranty: 12
+  status: free
+  warranty_end: 2008-08-06
+  end_of_lifetime: 2019
+
+
+four:
+  id: 4
+  name: ABCD Çalışma Koltuğu
+  template_id: 2
+  company: ABCD
+  properties: {}
+  year: 2014
+  warranty: 24
+  status: free
+  warranty_end: 2016-03-01
+  end_of_lifetime: 2024
