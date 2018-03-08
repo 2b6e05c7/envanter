@@ -22,6 +22,10 @@ class PanelControllerPolicy
     user.admin?
   end
 
+  def edit_user_groups?
+    user.admin? || user.responsible?
+  end
+
   def logs?
     user.admin? || user.manager?
   end

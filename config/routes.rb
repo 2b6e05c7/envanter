@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get :users, to: 'panel#users'
     get :'users/:id', to: 'panel#user'
     post :'users/:id/change_user_role', to: 'panel#change_user_role'
+    post :'users/:id/edit_user_groups', to: 'panel#edit_user_groups'
     get :logs, to: 'panel#logs'
   end
 
