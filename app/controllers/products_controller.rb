@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action(
     :set_product,
     only: %i[
-      show edit update destroy
+      show edit update destroy change_status confirm
     ]
   )
   before_action :set_templates, only: %i[new edit]
@@ -62,6 +62,22 @@ class ProductsController < ApplicationController
     else
       redirect_to products_path, alert: t(:destroy_error)
     end
+  end
+
+  def change_status
+    return nil if @product.any_pending_debit?
+    return nil unless @product.free?
+    @product.status = params[:status]
+    @product.confirmation = false
+    @product.save
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
+  end
+
+  def confirm
+    @product.confirmation = true
+    @product.save
+    redirect_to confirmation_operations_products_path
   end
 
   private

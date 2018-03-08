@@ -107,6 +107,7 @@ en:
   out_of_use: "Out of Use"
   ejected: "Ejected"
   effaced: "Effaced"
+  change_status: "Change Status"
   bill: "Bill"
   filtered: "Filtered"
   status_confirmation: "Status Confirmation"

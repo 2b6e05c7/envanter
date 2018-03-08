@@ -41,14 +41,15 @@ module LinkHelper
     )
   end
 
-  # def link_to_confirm(path = nil, text: t(:confirm))
-  #   link_to(
-  #     icon('check-circle', text),
-  #     path,
-  #     data: { confirm: t(:are_you_sure) },
-  #     class: 'btn btn-outline-success btn-sm'
-  #   )
-  # end
+  def link_to_confirm(path = nil, text: t(:confirm))
+    link_to(
+      icon('check-circle', text),
+      path,
+      method: :post,
+      data: { confirm: t(:are_you_sure) },
+      class: 'btn btn-outline-success btn-sm'
+    )
+  end
 
   def icon(icon, text)
     sanitize("<i class='fa fa-#{icon}'></i> " + text)

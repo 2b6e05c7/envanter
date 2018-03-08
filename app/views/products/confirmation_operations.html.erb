@@ -33,7 +33,7 @@
               <td><%= product.year %></td>
               <td><%= product.warranty_end %></td>
               <td><%= t(product.status) %></td>
-              <td><%= link_to_confirm nil%></td>
+              <td><%= link_to_confirm confirm_product_path(id: product.id)%></td>
               <td><%= link_to_edit edit_product_path(product) %></td>
               <td><%= link_to_destroy product %></td>
             </tr>

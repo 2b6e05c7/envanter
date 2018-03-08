@@ -19,6 +19,10 @@ Rails.application.routes.draw do
       get :filtered
       get :confirmation_operations
     end
+    member do
+      post :change_status
+      post :confirm
+    end
   end
 
   resources :templates
