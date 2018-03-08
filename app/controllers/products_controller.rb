@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
 
   def change_status
     return nil if @product.any_pending_debit?
-    return nil unless @product.free?
+    return nil if @product.busy?
     @product.status = params[:status]
     @product.confirmation = false
     @product.save

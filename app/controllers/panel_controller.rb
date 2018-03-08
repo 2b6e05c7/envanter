@@ -37,6 +37,7 @@ class PanelController < ApplicationController
   end
 
   def set_groups
+    @total_group_debits = Debit.where.not(group_id: nil).size
     @groups = Group.all.map { |g| { name: g.name, debits: g.debits.size } }.to_json
   end
 

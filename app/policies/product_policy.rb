@@ -1,10 +1,10 @@
 class ProductPolicy < ApplicationPolicy
   def index?
-    user.admin? || user.manager?
+    user.admin? || user.manager? || user.responsible?
   end
 
   def filtered?
-    user.admin? || user.manager?
+    user.admin? || user.manager? || user.responsible?
   end
 
   def confirmation_operations?
@@ -16,19 +16,19 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin? || user.manager?
+    user.admin? || user.responsible?
   end
 
   def update?
-    user.admin? || user.manager?
+    user.admin? || user.responsible?
   end
 
   def destroy?
-    user.admin? || user.manager?
+    user.admin? || user.responsible?
   end
 
   def change_status?
-    user.admin? || user.manager?
+    user.admin? || user.responsible?
   end
 
   def confirm?

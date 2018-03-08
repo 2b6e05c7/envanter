@@ -34,7 +34,10 @@
               <td><%= product.company %></td>
               <td><%= product.year %></td>
               <td><%= product.warranty_end %></td>
-              <td><%= t(product.status) %> (<%= t("confirmation_" + product.confirmation.to_s) %>)</td>
+              <td>
+                <%= t(product.status) %>
+                <%= "(" + t("confirmation_" + product.confirmation.to_s) + ")" unless product.free? || product.busy? %>
+              </td>
               <td><%= link_to_edit %></td>
               <td><%= link_to_destroy product %></td>
             </tr>

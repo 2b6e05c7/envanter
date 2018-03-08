@@ -1,11 +1,9 @@
-<!-- Breadcrumbs-->
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a href="/"><%= t(:dashboard) %></a>
   </li>
   <li class="breadcrumb-item active"><%= t(:system_status) %></li>
 </ol>
-<!-- Icon Cards-->
 <div class="row">
   <div class="col-xl-3 col-sm-6 mb-3">
     <div class="card text-white bg-primary o-hidden h-100">
@@ -72,7 +70,7 @@
     </div>
   </div>
 </div>
-<!-- Area Chart Example-->
+
 <div class="card mb-3">
   <div class="card-header">
     <i class="fa fa-area-chart"></i> <%= t(:logs_graph) %></div>
@@ -89,17 +87,21 @@
     </div>
   </div>
 </div>
-<div class="card mb-3">
-  <div class="card-header">
-    <i class="fa fa-pie-chart"></i> <%= t(:group_debits) %></div>
-  <div class="card-body">
-    <canvas id="myPieChart" width="4" height="1"></canvas>
-    <div id="groups" style="display:none;">
-      <%= @groups %>
+
+<% unless @total_group_debits.zero? %>
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-pie-chart"></i> <%= t(:group_debits) %></div>
+    <div class="card-body">
+      <canvas id="myPieChart" width="4" height="1"></canvas>
+      <div id="groups" style="display:none;">
+        <%= @groups %>
+      </div>
     </div>
   </div>
-</div>
-<div class="card mb-3">
+<% end %>
+
+<!-- <div class="card mb-3">
   <div class="card-header">
     <i class="fa fa-bar-chart"></i> <%= t(:debits_of_groups) %></div>
   <div class="card-body">
@@ -119,4 +121,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
