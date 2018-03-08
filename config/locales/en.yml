@@ -79,6 +79,7 @@ en:
   staff: "Staff"
   responsible: "Responsible"
   manager: "Manager"
+  change_role: "Change Role"
   sign_up: "Sign up"
   sign_in: "Sign in"
   sign_out: "Sign out"

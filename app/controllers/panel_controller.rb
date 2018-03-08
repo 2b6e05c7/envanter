@@ -16,6 +16,14 @@ class PanelController < ApplicationController
     @debits = Debit.where(user: @user)
   end
 
+  def change_user_role
+    @user = User.find(params[:id])
+    @user.role = params[:role]
+    @user.save
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
+  end
+
   def logs
     @logs = PublicActivity::Activity.page(params[:page])
   end

@@ -28,8 +28,9 @@ Rails.application.routes.draw do
 
   scope '/panel' do
     get :index, to: 'panel#index'
-    get :'users/:id', to: 'panel#user'
     get :users, to: 'panel#users'
+    get :'users/:id', to: 'panel#user'
+    post :'users/:id/change_user_role', to: 'panel#change_user_role'
     get :logs, to: 'panel#logs'
   end
 

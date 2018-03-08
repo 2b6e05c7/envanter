@@ -11,11 +11,15 @@ class PanelControllerPolicy
   end
 
   def users?
-    true
+    user.admin? || user.manager?
   end
 
   def user?
-    true
+    user.admin? || user.manager?
+  end
+
+  def change_user_role?
+    user.admin?
   end
 
   def logs?
